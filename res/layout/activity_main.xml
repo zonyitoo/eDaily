@@ -1,0 +1,150 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout 
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:id="@+id/relativelayout_news_activity_main">
+        
+        <android.support.v4.view.ViewPager
+            android:id="@+id/viewpager_news_activity_main"
+            android:layout_width="match_parent"
+            android:layout_height="200dp">    	
+        </android.support.v4.view.ViewPager>
+    	
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:text="头条新闻News"/>
+    	
+        <LinearLayout android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+		    android:layout_alignParentBottom="true"
+		    android:orientation="horizontal"
+		    android:background="#66000000"
+		    android:gravity="center_vertical"
+		    android:paddingTop="3dp"
+		    android:paddingBottom="3dp">
+		    
+		    <TextView android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_weight="1.0"
+		        android:id="@+id/textview_viewpager_activity_main"
+		        android:textSize="15dp"/>
+		    
+		    <LinearLayout android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_weight="4.0"
+		        android:orientation="horizontal"
+		        android:gravity="center">
+		        
+		        <View
+	                android:id="@+id/view_dot0_viewpager_activity_main"
+	                style="@style/viewpager_dot_style"
+	                android:background="@drawable/dot_focused" />
+		        <View
+	                android:id="@+id/view_dot1_viewpager_activity_main"
+	                style="@style/viewpager_dot_style"
+	                android:background="@drawable/dot_normal" />
+		        <View
+	                android:id="@+id/view_dot2_viewpager_activity_main"
+	                style="@style/viewpager_dot_style"
+	                android:background="@drawable/dot_normal" />
+		        <View
+	                android:id="@+id/view_dot3_viewpager_activity_main"
+	                style="@style/viewpager_dot_style"
+	                android:background="@drawable/dot_normal" />
+		        <View
+	                android:id="@+id/view_dot4_viewpager_activity_main"
+	                style="@style/viewpager_dot_style"
+	                android:background="@drawable/dot_normal" />
+		        
+		    </LinearLayout>
+		</LinearLayout>
+    </RelativeLayout>
+    
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        
+        <RelativeLayout 
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+            
+            <TextView 
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:text="态度Attitude"/>
+            
+            <ImageView 
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
+                android:id="@+id/imageview_attitude_activity_main"/>
+        </RelativeLayout>
+        
+        <RelativeLayout 
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+            
+            <TextView 
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:text="微博Weibo"/>
+            
+            <ImageView 
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
+                android:id="@+id/imageview_weibo_activity_main"/>
+        </RelativeLayout>
+    </LinearLayout>
+    
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        
+        <RelativeLayout 
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+            
+            <TextView 
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:text="视角Perspective"/>
+            
+            <ImageView 
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
+                android:id="@+id/imageview_perspective_activity_main"/>
+        </RelativeLayout>
+        
+        <RelativeLayout 
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+            
+            <TextView 
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:text="吐嘈What the fuck"/>
+            
+            <ImageView 
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
+                android:id="@+id/imageview_redicule_activity_main"/>
+        </RelativeLayout>
+    </LinearLayout>
+
+</LinearLayout>
