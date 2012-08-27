@@ -16,7 +16,7 @@ import edu.sysuedaily.R;
 
 public class NewsListFragment extends SherlockListFragment {
 	
-	static NewsListFragment getInstant(int position) {
+	static NewsListFragment newInstant(int position) {
 		NewsListFragment fragment = new NewsListFragment();
 		Bundle argsBundle = new Bundle();
 		argsBundle.putInt("showId", position);
@@ -29,7 +29,7 @@ public class NewsListFragment extends SherlockListFragment {
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
-		int pos = getArguments().getInt("showInt");
+		int pos = getArguments().getInt("showId");
 		
 		System.out.println(pos);
 		
@@ -40,7 +40,7 @@ public class NewsListFragment extends SherlockListFragment {
 
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
-		int pos = getArguments().getInt("showInt");
+		int pos = getArguments().getInt("showId");
 		
 		ArrayList<Map<String, ?>> arrayList2 = new ArrayList<Map<String,?>>();
 		HashMap<String, Object> item1 = new HashMap<String, Object>();

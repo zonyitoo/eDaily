@@ -54,7 +54,7 @@ public class NewsActivity extends SherlockFragmentActivity implements OnNavigati
 	public boolean onNavigationItemSelected(int itemPosition, long itemId) {
 		System.out.println(itemPosition);
 		FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-		NewsListFragment fragment = NewsListFragment.getInstant(itemPosition);
+		NewsListFragment fragment = NewsListFragment.newInstant(itemPosition);
 		transaction.replace(R.id.framelayout_list_activity_news, fragment);
 		transaction.commit();
 		return false;
