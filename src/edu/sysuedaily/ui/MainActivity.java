@@ -30,6 +30,7 @@ import android.widget.RelativeLayout;
 import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
+import com.actionbarsherlock.view.SubMenu;
 
 import edu.sysuedaily.R;
 
@@ -59,7 +60,7 @@ public class MainActivity extends SherlockActivity {
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
-    	setTheme(com.actionbarsherlock.R.style.Theme_Sherlock_Light);
+    	//setTheme(com.actionbarsherlock.R.style.Theme_Sherlock_Light_DarkActionBar);
     	
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -138,21 +139,28 @@ public class MainActivity extends SherlockActivity {
         //boolean isLight = SampleList.THEME == R.style.Theme_Sherlock_Light;
 
         menu.add("SEND")
+        	.setIcon(R.drawable.ic_compose)
             .setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM | MenuItem.SHOW_AS_ACTION_WITH_TEXT);
-
+        
+        menu.add("MENU")
+        	.setIcon(R.drawable.ic_menu_moreoverflow_normal_holo_dark)
+        	.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM | MenuItem.SHOW_AS_ACTION_WITH_TEXT);
+        
         return true;
     }
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		switch(item.getItemId()) {
-		case 0:
-			
-			break;
-		}
+		System.out.println(item.getTitle());
+		if (item.getTitle().equals("SEND"))
+			;
+		else if (item.getTitle().equals("MENU"))
+			startActivity(new Intent(this, PreferencesActivity.class));
 		
 		return super.onOptionsItemSelected(item);
 	}
+	
+	
     
     private class HeadPagerAdapter extends PagerAdapter {
 

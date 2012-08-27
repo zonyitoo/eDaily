@@ -18,7 +18,7 @@ public class NewsActivity extends SherlockFragmentActivity implements OnNavigati
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		setTheme(com.actionbarsherlock.R.style.Theme_Sherlock_Light);
+		//NewsActivity.setTheme(com.actionbarsherlock.R.style.Theme_Sherlock_Light_DarkActionBar);
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_news);
 		
@@ -30,7 +30,8 @@ public class NewsActivity extends SherlockFragmentActivity implements OnNavigati
 		
 		String[] arrayList = new String[] {"头条新闻", "讲座信息"};
 		ArrayAdapter<String> list = 
-				new ArrayAdapter<String>(this, com.actionbarsherlock.R.layout.sherlock_spinner_item, arrayList);
+				new ArrayAdapter<String>(actionBar.getThemedContext(), 
+						com.actionbarsherlock.R.layout.sherlock_spinner_item, arrayList);
 		list.setDropDownViewResource(com.actionbarsherlock.R.layout.sherlock_spinner_dropdown_item);
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
 		actionBar.setListNavigationCallbacks(list, this);
