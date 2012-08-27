@@ -30,8 +30,8 @@ public class NewsActivity extends SherlockFragmentActivity implements OnNavigati
 		
 		String[] arrayList = new String[] {"头条新闻", "讲座信息"};
 		ArrayAdapter<String> list = 
-				new ArrayAdapter<String>(this, R.layout.sherlock_spinner_item, arrayList);
-		list.setDropDownViewResource(R.layout.sherlock_spinner_dropdown_item);
+				new ArrayAdapter<String>(this, com.actionbarsherlock.R.layout.sherlock_spinner_item, arrayList);
+		list.setDropDownViewResource(com.actionbarsherlock.R.layout.sherlock_spinner_dropdown_item);
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
 		actionBar.setListNavigationCallbacks(list, this);
 		

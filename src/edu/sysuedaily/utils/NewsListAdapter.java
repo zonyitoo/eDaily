@@ -3,7 +3,7 @@ package edu.sysuedaily.utils;
 import java.util.ArrayList;
 import java.util.Map;
 
-import com.actionbarsherlock.R;
+import edu.sysuedaily.R;
 
 import android.R.integer;
 import android.content.ContentResolver;
