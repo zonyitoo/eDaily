@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
     <!--  
 	<ListView 
 	    android:layout_width="match_parent"
@@ -9,9 +10,17 @@
 	    android:id="@+id/listview_head_activity_news"/>
 	-->
 	
-	<FrameLayout
-	    android:id="@+id/framelayout_list_activity_news"
-	    android:layout_width="match_parent"
-	    android:layout_height="match_parent"/>
+	<com.viewpagerindicator.TitlePageIndicator
+        android:id="@+id/titlepageindicator_activity_news"
+        android:padding="10dip"
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        />
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager_activity_news"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        />
 	
-</FrameLayout>
+</LinearLayout>

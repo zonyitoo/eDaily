@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import android.R.integer;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
@@ -16,7 +17,7 @@ import edu.sysuedaily.R;
 
 public class NewsListFragment extends SherlockListFragment {
 	
-	static NewsListFragment newInstant(int position) {
+	public static NewsListFragment newInstant(int position) {
 		NewsListFragment fragment = new NewsListFragment();
 		Bundle argsBundle = new Bundle();
 		argsBundle.putInt("showId", position);
@@ -43,15 +44,41 @@ public class NewsListFragment extends SherlockListFragment {
 		int pos = getArguments().getInt("showId");
 		
 		ArrayList<Map<String, ?>> arrayList2 = new ArrayList<Map<String,?>>();
-		HashMap<String, Object> item1 = new HashMap<String, Object>();
+		
 		if (pos == 0) {
-			item1.put("TITLE", "新闻条目1");
-			arrayList2.add(item1);
+			for (int i = 0; i < 10; ++ i) {
+				HashMap<String, Object> item = new HashMap<String, Object>();
+				item.put("TITLE", "新闻条目1");
+				arrayList2.add(item);
+			}
 		}
-		HashMap<String, Object> item2 = new HashMap<String, Object>();
-		if (pos == 1) {
-			item2.put("TITLE", "新闻条目2");
-			arrayList2.add(item2);
+		else if (pos == 1) {
+			for (int i = 0; i < 10; ++ i) {
+				HashMap<String, Object> item = new HashMap<String, Object>();
+				item.put("TITLE", "新闻条目2");
+				arrayList2.add(item);
+			}
+		}
+		else if (pos == 2) {
+			for (int i = 0; i < 10; ++ i) {
+				HashMap<String, Object> item = new HashMap<String, Object>();
+				item.put("TITLE", "新闻条目3");
+				arrayList2.add(item);
+			}
+		}
+		else if (pos == 3) {
+			for (int i = 0; i < 10; ++ i) {
+				HashMap<String, Object> item = new HashMap<String, Object>();
+				item.put("TITLE", "新闻条目4");
+				arrayList2.add(item);
+			}
+		}
+		else if (pos == 4) {
+			for (int i = 0; i < 10; ++ i) {
+				HashMap<String, Object> item = new HashMap<String, Object>();
+				item.put("TITLE", "新闻条目5");
+				arrayList2.add(item);
+			}
 		}
 		SimpleAdapter adapter = new SimpleAdapter(getActivity(), arrayList2, 
 				R.layout.listcontent_activity_news, new String[] {"TITLE"}, new int[] {R.id.textview_newstitle_listcontent_activity_news});
@@ -69,7 +96,7 @@ public class NewsListFragment extends SherlockListFragment {
 
 	@Override
 	public void onListItemClick(ListView l, View v, int position, long id) {
-		
+		startActivity(new Intent(getActivity(), NewsDetailActivity.class));
 	}
 
 }

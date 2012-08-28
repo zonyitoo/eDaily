@@ -2,42 +2,38 @@ package edu.sysuedaily.ui;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.ViewPager;
 import android.widget.ArrayAdapter;
 
 import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.ActionBar.OnNavigationListener;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.MenuItem;
+import com.viewpagerindicator.TitlePageIndicator;
 
 import edu.sysuedaily.R;
+import edu.sysuedaily.utils.NewsPagerAdapter;
 
-public class NewsActivity extends SherlockFragmentActivity implements OnNavigationListener {
+public class NewsActivity extends SherlockFragmentActivity {
 	
 	ActionBar actionBar;
-	//ListView listView;
+	
+	TitlePageIndicator titlePageIndicator;
+	ViewPager viewPager;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		//NewsActivity.setTheme(com.actionbarsherlock.R.style.Theme_Sherlock_Light_DarkActionBar);
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_news);
 		
-		//listView = (ListView) findViewById(R.id.listview_head_activity_news);
+		titlePageIndicator = (TitlePageIndicator) findViewById(R.id.titlepageindicator_activity_news);
+		viewPager = (ViewPager) findViewById(R.id.viewpager_activity_news);
 		
 		actionBar = getSupportActionBar();
 		actionBar.setDisplayHomeAsUpEnabled(true);
-		actionBar.setDisplayShowTitleEnabled(false);
 		
-		String[] arrayList = new String[] {"头条新闻", "讲座信息"};
-		ArrayAdapter<String> list = 
-				new ArrayAdapter<String>(actionBar.getThemedContext(), 
-						com.actionbarsherlock.R.layout.sherlock_spinner_item, arrayList);
-		list.setDropDownViewResource(com.actionbarsherlock.R.layout.sherlock_spinner_dropdown_item);
-		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
-		actionBar.setListNavigationCallbacks(list, this);
-		
-		
-		
+		viewPager.setAdapter(new NewsPagerAdapter(getSupportFragmentManager()));
+		titlePageIndicator.setViewPager(viewPager);
 	}
 
 	@Override
@@ -51,15 +47,5 @@ public class NewsActivity extends SherlockFragmentActivity implements OnNavigati
 		
 		return super.onOptionsItemSelected(item);
 	}
-	
-	public boolean onNavigationItemSelected(int itemPosition, long itemId) {
-		System.out.println(itemPosition);
-		FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-		NewsListFragment fragment = NewsListFragment.newInstant(itemPosition);
-		transaction.replace(R.id.framelayout_list_activity_news, fragment);
-		transaction.commit();
-		return false;
-	}
-	
 	
 }
