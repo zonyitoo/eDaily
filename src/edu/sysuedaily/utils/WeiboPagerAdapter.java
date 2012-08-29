@@ -1,32 +1,35 @@
 package edu.sysuedaily.utils;
 
+import edu.sysuedaily.ui.WeiboListFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 public class WeiboPagerAdapter extends FragmentPagerAdapter {
 
+	final String[] titleStrings = {"微博", "微话题", "微人物"};
+	WeiboListFragment[] fragments = {null, null, null};
+	
 	public WeiboPagerAdapter(FragmentManager fm) {
 		super(fm);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public Fragment getItem(int arg0) {
-		// TODO Auto-generated method stub
-		return null;
+		if (fragments[arg0] == null)
+			fragments[arg0] = WeiboListFragment.newInstant(arg0);
+		
+		return fragments[arg0];
 	}
 
 	@Override
 	public int getCount() {
-		// TODO Auto-generated method stub
-		return 0;
+		return fragments.length;
 	}
 
 	@Override
 	public CharSequence getPageTitle(int position) {
-		// TODO Auto-generated method stub
-		return super.getPageTitle(position);
+		return titleStrings[position];
 	}
 
 }
