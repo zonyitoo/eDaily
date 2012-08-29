@@ -6,7 +6,7 @@
 	<ImageView android:layout_width="match_parent"
 	    android:layout_height="200dp"
 	    android:src="@drawable/loading"
-	    android:id="@+id/imageview_listcontent_header_activity_news"/>
+	    android:id="@+id/image"/>
 	
 	<TextView android:layout_width="match_parent"
 	    android:layout_height="wrap_content"

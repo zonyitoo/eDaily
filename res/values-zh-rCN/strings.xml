@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <string name="app_name">逸仙新闻</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_main">逸仙新闻</string>
+    <string name="title_activity_news">逸仙新闻</string>
+    <string name="title_activity_newsdetail">新闻内容</string>
+    <string name="title_activity_preference">设置</string>
+    <string name="title_activity_attitude">态度</string>
+    <string name="title_activity_spitslot">吐槽</string>
+    <string name="title_activity_visual">视觉</string>
+    <string name="title_activity_weibo">微博</string>
+    
+</resources>

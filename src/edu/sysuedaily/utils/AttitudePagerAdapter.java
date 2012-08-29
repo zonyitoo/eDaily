@@ -1,22 +1,24 @@
 package edu.sysuedaily.utils;
 
-import edu.sysuedaily.ui.NewsListFragment;
+import edu.sysuedaily.ui.AttitudeListFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-public class NewsPagerAdapter extends FragmentPagerAdapter {
-	final String[] title = {"头条新闻", "讲座信息", "新闻3", "新闻4", "新闻5"};
-	NewsListFragment[] fragments = {null, null, null, null, null};
+public class AttitudePagerAdapter extends FragmentPagerAdapter {
+
+	AttitudeListFragment[] fragments = {null, null, null, null};
+	final String[] title = {"微议", "论见", "投票", "影评"};
 	
-	public NewsPagerAdapter(FragmentManager fm) {
+	public AttitudePagerAdapter(FragmentManager fm) {
 		super(fm);
 	}
 
 	@Override
 	public Fragment getItem(int arg0) {
 		if (fragments[arg0] == null)
-			fragments[arg0] = NewsListFragment.newInstant(arg0);
+			fragments[arg0] = AttitudeListFragment.newInstant(arg0);
+		
 		return fragments[arg0];
 	}
 
@@ -29,5 +31,4 @@ public class NewsPagerAdapter extends FragmentPagerAdapter {
 	public CharSequence getPageTitle(int position) {
 		return title[position];
 	}
-
 }

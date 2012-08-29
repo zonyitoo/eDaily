@@ -7,7 +7,7 @@
     <ImageView android:layout_width="match_parent"
         android:layout_height="200dp"
         android:src="@drawable/loading"
-        android:id="@+id/imageview_news_listheader"
+        android:id="@+id/image"
         android:scaleType="centerCrop"/>
         
     <TextView android:layout_width="match_parent"
@@ -15,7 +15,7 @@
         android:textSize="15sp"
         android:text="NEWS TITLE"
         android:padding="5dp"
-        android:id="@+id/textview_news_listheader"
+        android:id="@+id/title"
         android:layout_alignParentBottom="true"
         android:background="#66000000"/>
 

@@ -1,5 +1,6 @@
 package edu.sysuedaily.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnLongClickListener;
@@ -31,11 +32,11 @@ public class NewsDetailActivity extends SherlockActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_newsdetail);
 		
-		titleTextView = (TextView) findViewById(R.id.textview_title_activity_newsdetail);
-		fromTextView = (TextView) findViewById(R.id.textview_from_activity_newsdetail);
-		contentTextView = (TextView) findViewById(R.id.textview_content_activity_newsdetail);
-		picImageView = (ImageView) findViewById(R.id.imageview_pic_activity_newsdetail);
-		wholeContentLinearLayout = (LinearLayout) findViewById(R.id.linearlayout_wholecontent_activity_newsdetail);
+		titleTextView = (TextView) findViewById(R.id.title);
+		fromTextView = (TextView) findViewById(R.id.from);
+		contentTextView = (TextView) findViewById(R.id.content);
+		picImageView = (ImageView) findViewById(R.id.image);
+		wholeContentLinearLayout = (LinearLayout) findViewById(R.id.wholecontent);
 		
 		ActionBar actionBar = getSupportActionBar();
 		actionBar.setBackgroundDrawable(
@@ -50,6 +51,9 @@ public class NewsDetailActivity extends SherlockActivity {
 				return true;
 			}
 		});
+		
+		Intent args = getIntent();
+		contentTextView.setText("selected listnumber: " + args.getIntExtra("selectednews", 0));
 	}
 	
 	@Override

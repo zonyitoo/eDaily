@@ -1,8 +1,14 @@
 <resources>
 
     <string name="app_name">eDaily</string>
-    <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
     <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_news">eDaily</string>
+    <string name="title_activity_newsdetail">Details</string>
+    <string name="title_activity_preference">Settings</string>
+    <string name="title_activity_attitude">Attitude</string>
+    <string name="title_activity_spitslot">Spits Lot</string>
+    <string name="title_activity_visual">Visual</string>
+    <string name="title_activity_weibo">Weibo</string>
 
 </resources>

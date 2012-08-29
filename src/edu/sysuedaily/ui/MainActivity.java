@@ -1,17 +1,9 @@
 package edu.sysuedaily.ui;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
 import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -24,23 +16,23 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
-import com.actionbarsherlock.view.SubMenu;
 
 import edu.sysuedaily.R;
 
-public class MainActivity extends SherlockActivity {
+public class MainActivity extends SherlockActivity implements OnClickListener {
 	
 	ViewPager headlinePager;
 	ImageView attitudeImageView;
 	ImageView weiboImageView;
-	ImageView perspectiveImageView;
-	ImageView rediculeImageView;
+	ImageView visualImageView;
+	ImageView spitslotImageView;
 	RelativeLayout newsLayout;
 
 	ArrayList<View> headDots;
@@ -65,21 +57,25 @@ public class MainActivity extends SherlockActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         
-        headlinePager 			= 	(ViewPager) findViewById(R.id.viewpager_news_activity_main);
+        headlinePager = (ViewPager) findViewById(R.id.viewpager_news_activity_main);
         
-        attitudeImageView 		= 	(ImageView) findViewById(R.id.imageview_attitude_activity_main);
-        weiboImageView 			= 	(ImageView) findViewById(R.id.imageview_weibo_activity_main);
-        perspectiveImageView 	= 	(ImageView) findViewById(R.id.imageview_perspective_activity_main);
-        rediculeImageView 		= 	(ImageView) findViewById(R.id.imageview_redicule_activity_main);
+        attitudeImageView = (ImageView) findViewById(R.id.attitude_img);
+        attitudeImageView.setOnClickListener(this);
+        weiboImageView = (ImageView) findViewById(R.id.weibo_img);
+        weiboImageView.setOnClickListener(this);
+        visualImageView = (ImageView) findViewById(R.id.visual_img);
+        visualImageView.setOnClickListener(this);
+        spitslotImageView = (ImageView) findViewById(R.id.spitslot_img);
+        spitslotImageView.setOnClickListener(this);
         
-        newsLayout				= 	(RelativeLayout) findViewById(R.id.relativelayout_news_activity_main);
+        newsLayout = (RelativeLayout) findViewById(R.id.relativelayout_news_activity_main);
         
         headDots = new ArrayList<View>();
-        headDots.add(findViewById(R.id.view_dot0_viewpager_activity_main));
-        headDots.add(findViewById(R.id.view_dot1_viewpager_activity_main));
-        headDots.add(findViewById(R.id.view_dot2_viewpager_activity_main));
-        headDots.add(findViewById(R.id.view_dot3_viewpager_activity_main));
-        headDots.add(findViewById(R.id.view_dot4_viewpager_activity_main));
+        headDots.add(findViewById(R.id.dot0));
+        headDots.add(findViewById(R.id.dot1));
+        headDots.add(findViewById(R.id.dot2));
+        headDots.add(findViewById(R.id.dot3));
+        headDots.add(findViewById(R.id.dot4));
         
         int scrwidth = getWindowManager().getDefaultDisplay().getWidth();
         LinearLayout.LayoutParams newsLayoutParams = (android.widget.LinearLayout.LayoutParams) newsLayout.getLayoutParams();
@@ -181,10 +177,13 @@ public class MainActivity extends SherlockActivity {
 			ImageView imageView = new ImageView(MainActivity.this);
 			imageView.setImageResource(R.drawable.loading);
 			imageView.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
+			imageView.setScaleType(ScaleType.CENTER_CROP);
 			imageView.setOnClickListener(new OnClickListener() {
 				
 				public void onClick(View v) {
-					startActivity(new Intent(MainActivity.this, NewsActivity.class));
+					Intent intent = new Intent(MainActivity.this, NewsActivity.class);
+					intent.putExtra("selectedNews", v.getId());
+					startActivity(intent);
 					
 				}
 			});
@@ -197,4 +196,27 @@ public class MainActivity extends SherlockActivity {
 			((ViewPager) arg0).removeView((View) arg2);
 		}
     }
+
+    
+    // Click the 4 parts
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.attitude_img:
+			startActivity(new Intent(this, AttitudeActivity.class));
+			break;
+		case R.id.weibo_img:
+			startActivity(new Intent(this, WeiboActivity.class));
+			break;
+		case R.id.visual_img:
+			startActivity(new Intent(this, VisualActivity.class));
+			break;
+		case R.id.spitslot_img:
+			startActivity(new Intent(this, SpitslotActivity.class));
+
+		default:
+			break;
+		}
+		
+	}
 }

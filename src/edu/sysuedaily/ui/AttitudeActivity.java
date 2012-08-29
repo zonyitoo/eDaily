@@ -9,40 +9,40 @@ import com.actionbarsherlock.view.MenuItem;
 import com.viewpagerindicator.TitlePageIndicator;
 
 import edu.sysuedaily.R;
-import edu.sysuedaily.utils.NewsPagerAdapter;
+import edu.sysuedaily.utils.AttitudePagerAdapter;
 
-public class NewsActivity extends SherlockFragmentActivity {
-	
-	ActionBar actionBar;
-	
+public class AttitudeActivity extends SherlockFragmentActivity {
+
 	TitlePageIndicator titlePageIndicator;
-	ViewPager viewPager;
+	ViewPager pager;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_news);
+		setContentView(R.layout.activity_attitude);
 		
-		titlePageIndicator = (TitlePageIndicator) findViewById(R.id.indicator);
-		viewPager = (ViewPager) findViewById(R.id.pager);
-		
-		actionBar = getSupportActionBar();
+		ActionBar actionBar = getSupportActionBar();
 		actionBar.setDisplayHomeAsUpEnabled(true);
 		
-		viewPager.setAdapter(new NewsPagerAdapter(getSupportFragmentManager()));
-		titlePageIndicator.setViewPager(viewPager);
+		titlePageIndicator = (TitlePageIndicator) findViewById(R.id.indicator);
+		pager = (ViewPager) findViewById(R.id.pager);
+		
+		pager.setAdapter(new AttitudePagerAdapter(getSupportFragmentManager()));
+		titlePageIndicator.setViewPager(pager);
 	}
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		switch(item.getItemId()) {
+		switch (item.getItemId()) {
 		case android.R.id.home:
 			finish();
 			break;
+
+		default:
+			break;
 		}
 		
-		
-		return super.onOptionsItemSelected(item);
+		return true;
 	}
-	
+
 }

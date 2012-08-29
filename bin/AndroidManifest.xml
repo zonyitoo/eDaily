@@ -32,23 +32,46 @@
         
         <activity 
             android:name=".ui.NewsActivity"
-            android:label="逸仙新闻"
+            android:label="@string/title_activity_news"
             android:screenOrientation="portrait" >
         </activity>
         
         <activity 
             android:name=".ui.PreferencesActivity"
-            android:label="设置"
+            android:label="@string/title_activity_preference"
             android:screenOrientation="portrait">
         </activity>
         
         <activity 
             android:name=".ui.NewsDetailActivity"
-            android:label="新闻内容"
+            android:label="@string/title_activity_newsdetail"
             android:screenOrientation="portrait"
             android:uiOptions="splitActionBarWhenNarrow">
         </activity>
         
+        <activity 
+            android:name=".ui.AttitudeActivity"
+            android:label="@string/title_activity_attitude"
+            android:screenOrientation="portrait">
+        </activity>
+        
+        <activity 
+            android:name=".ui.WeiboActivity"
+            android:label="@string/title_activity_weibo"
+            android:screenOrientation="portrait">
+        </activity>
+        
+        <activity 
+            android:name=".ui.VisualActivity"
+            android:label="@string/title_activity_visual"
+            android:screenOrientation="portrait">
+        </activity>
+        
+        <activity 
+            android:name=".ui.SpitslotActivity"
+            android:label="@string/title_activity_spitslot"
+            android:screenOrientation="portrait">
+        </activity>
     </application>
 
 </manifest>

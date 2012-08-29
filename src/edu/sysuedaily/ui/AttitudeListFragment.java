@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,31 +14,29 @@ import com.actionbarsherlock.app.SherlockListFragment;
 
 import edu.sysuedaily.R;
 
-public class NewsListFragment extends SherlockListFragment {
+public class AttitudeListFragment extends SherlockListFragment {
 	
 	public static final String SELECTED_PAGE = "selected_page";
 	
-	public static NewsListFragment newInstant(int position) {
-		NewsListFragment fragment = new NewsListFragment();
-		Bundle argsBundle = new Bundle();
-		argsBundle.putInt(SELECTED_PAGE, position);
-		fragment.setArguments(argsBundle);
+	public static AttitudeListFragment newInstant(int page) {
+		AttitudeListFragment fragment = new AttitudeListFragment();
+		Bundle args = new Bundle();
+		args.putInt(SELECTED_PAGE, page);
+		fragment.setArguments(args);
 		
 		return fragment;
 	}
-	
-	
-	
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
-		
+		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 	}
 
-
-
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
+		super.onActivityCreated(savedInstanceState);
+		
 		int pos = getArguments().getInt(SELECTED_PAGE);
 		
 		ArrayList<Map<String, ?>> arrayList2 = new ArrayList<Map<String,?>>();
@@ -80,7 +77,7 @@ public class NewsListFragment extends SherlockListFragment {
 			}
 		}
 		SimpleAdapter adapter = new SimpleAdapter(getActivity(), arrayList2, 
-				R.layout.listcontent_activity_news, new String[] {"TITLE"}, new int[] {R.id.title});
+				R.layout.listcontent_activity_attitude, new String[] {"TITLE"}, new int[] {R.id.title});
 		
 		setListAdapter(null);
 		
@@ -89,21 +86,13 @@ public class NewsListFragment extends SherlockListFragment {
 		
 		setListAdapter(adapter);
 		
-		super.onActivityCreated(savedInstanceState);
-	}
-
-	@Override
-	public void onSaveInstanceState(Bundle outState) {
-		// TODO Auto-generated method stub
-		super.onSaveInstanceState(outState);
+		
 	}
 
 	@Override
 	public void onListItemClick(ListView l, View v, int position, long id) {
-		Intent intent = new Intent(getActivity(), NewsDetailActivity.class);
-		intent.putExtra("selectednews", position);
 		
-		startActivity(intent);
 	}
-
+	
+	
 }

@@ -1,6 +1,5 @@
 package edu.sysuedaily.ui;
 
-import android.R.anim;
 import android.os.Bundle;
 
 import com.actionbarsherlock.app.ActionBar;
