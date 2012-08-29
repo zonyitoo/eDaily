@@ -1145,13 +1145,14 @@ containing a value of this type.
         public static final int homeAsUp=0x7f050009;
         public static final int imageview_attitude_activity_main=0x7f050032;
         public static final int imageview_listcontent_header_activity_news=0x7f050041;
+        public static final int imageview_news_listheader=0x7f050042;
         public static final int imageview_perspective_activity_main=0x7f050034;
         public static final int imageview_pic_activity_newsdetail=0x7f05003d;
         public static final int imageview_redicule_activity_main=0x7f050035;
         public static final int imageview_weibo_activity_main=0x7f050033;
         public static final int linearlayout_wholecontent_activity_newsdetail=0x7f05003a;
         public static final int listMode=0x7f050005;
-        public static final int menu_settings=0x7f050042;
+        public static final int menu_settings=0x7f050044;
         public static final int none=0x7f050000;
         public static final int normal=0x7f050004;
         public static final int relativelayout_news_activity_main=0x7f05002a;
@@ -1161,6 +1162,7 @@ containing a value of this type.
         public static final int tabMode=0x7f050006;
         public static final int textview_content_activity_newsdetail=0x7f05003e;
         public static final int textview_from_activity_newsdetail=0x7f05003c;
+        public static final int textview_news_listheader=0x7f050043;
         public static final int textview_newstitle_listcontent_activity_news=0x7f05003f;
         public static final int textview_shortdescription_listcontent_activity_news=0x7f050040;
         public static final int textview_title_activity_newsdetail=0x7f05003b;
@@ -1212,8 +1214,9 @@ containing a value of this type.
         public static final int activity_splash=0x7f030017;
         public static final int listcontent_activity_news=0x7f030018;
         public static final int listcontent_header_activity_news=0x7f030019;
-        public static final int sherlock_spinner_dropdown_item=0x7f03001a;
-        public static final int sherlock_spinner_item=0x7f03001b;
+        public static final int news_listheader=0x7f03001a;
+        public static final int sherlock_spinner_dropdown_item=0x7f03001b;
+        public static final int sherlock_spinner_item=0x7f03001c;
     }
     public static final class menu {
         public static final int activity_main=0x7f0c0000;

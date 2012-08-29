@@ -6,10 +6,15 @@ import java.util.Map;
 
 import android.R.integer;
 import android.content.Intent;
+import android.graphics.Matrix.ScaleToFit;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.ImageView.ScaleType;
 
 import com.actionbarsherlock.app.SherlockListFragment;
 
@@ -30,9 +35,6 @@ public class NewsListFragment extends SherlockListFragment {
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
-		int pos = getArguments().getInt("showId");
-		
-		System.out.println(pos);
 		
 		super.onCreate(savedInstanceState);
 	}
@@ -82,6 +84,11 @@ public class NewsListFragment extends SherlockListFragment {
 		}
 		SimpleAdapter adapter = new SimpleAdapter(getActivity(), arrayList2, 
 				R.layout.listcontent_activity_news, new String[] {"TITLE"}, new int[] {R.id.textview_newstitle_listcontent_activity_news});
+		
+		setListAdapter(null);
+		
+		getListView()
+			.addHeaderView(LayoutInflater.from(getActivity()).inflate(R.layout.news_listheader, null));
 		
 		setListAdapter(adapter);
 		
