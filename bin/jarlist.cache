@@ -1,6 +1,6 @@
 # cache for current jar dependecy. DO NOT EDIT.
 # format is <lastModified> <length> <SHA-1> <path>
 # Encoding is UTF-8
-1345819844000 349252 612846c9857077a039b533718f72db3bc041d389 /home/zonyitoo/workspace/Android-ViewPagerIndicator/library/libs/android-support-v4.jar
-1345746456000 349252 612846c9857077a039b533718f72db3bc041d389 /home/zonyitoo/workspace/JakeWharton-ActionBarSherlock/library/libs/android-support-v4.jar
-1345819844000 349252 612846c9857077a039b533718f72db3bc041d389 /home/zonyitoo/workspace/eDaily/libs/android-support-v4.jar
+1346292390000 349252 612846c9857077a039b533718f72db3bc041d389 /home/ragnarok/Resource/androidResource/ViewPagerIndicatorLibrary/libs/android-support-v4.jar
+1346292390000 349252 612846c9857077a039b533718f72db3bc041d389 /home/ragnarok/Resource/androidResource/ActionBarSherlock/library/libs/android-support-v4.jar
+1346292390000 349252 612846c9857077a039b533718f72db3bc041d389 /home/ragnarok/Projects/eDaily/libs/android-support-v4.jar
