@@ -13,4 +13,8 @@
     <string name="title_activity_weibo">微博</string>
     <string name="title_activity_weibodetail">微博</string>
     
+    <string name="prefs_category_weibo">微博账号</string>
+    <string name="prefs_unbound_weibo">绑定微博</string>
+    <string name="prefs_click_to_unbound_weibo">点击解除绑定微博</string>
+    <string name="prefs_click_to_bound_weibo">点击绑定微博</string>
 </resources>

@@ -1445,6 +1445,10 @@ containing a value of this type.
         public static final int menu_settings=0x7f070024;
         public static final int ok=0x7f070002;
         public static final int please_login=0x7f070009;
+        public static final int prefs_category_weibo=0x7f07002e;
+        public static final int prefs_click_to_bound_weibo=0x7f070031;
+        public static final int prefs_click_to_unbound_weibo=0x7f070030;
+        public static final int prefs_unbound_weibo=0x7f07002f;
         public static final int send=0x7f070006;
         public static final int send_failed=0x7f07000b;
         public static final int send_sucess=0x7f07000a;
