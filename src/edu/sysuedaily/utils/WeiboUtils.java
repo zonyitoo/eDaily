@@ -3,9 +3,14 @@ package edu.sysuedaily.utils;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.R.integer;
 import android.app.Activity;
+import android.content.SharedPreferences;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.preference.PreferenceManager;
 
+import com.weibo.net.DialogError;
 import com.weibo.net.Weibo;
 import com.weibo.net.WeiboDialogListener;
 import com.weibo.net.WeiboException;
@@ -20,11 +25,84 @@ public class WeiboUtils {
 	public static final String EXPIRES_IN = "expires_in";
 	public static final String USER_SCREEN_NAME = "user_screen_name";
 	
+	public static final int AUTHORIZE_EXCEPTION = 0;
+	public static final int AUTHORIZE_ERROR = 1;
+	public static final int AUTHORIZE_COMPLETE = 2;
+	public static final int AUTHORIZE_CANCEL = 3;
 	
-	public static void authorize(final Activity activity, final WeiboDialogListener listener) {
+	
+	public static void authorize(final Activity activity, final Handler handler) {
 		final Weibo weibo = Weibo.getInstance();
+		weibo.setupConsumerConfig(WeiboUtils.CONSUMER_KEY, WeiboUtils.CONSUMER_SECRET);
 		weibo.setRedirectUrl("https://api.weibo.com/oauth2/default.html");
-		weibo.authorize(activity, listener);
+		weibo.authorize(activity, new WeiboDialogListener() {
+			
+			@Override
+			public void onWeiboException(WeiboException e) {
+				Bundle bundle = new Bundle();
+				bundle.putString("message", e.getMessage());
+				Message message = new Message();
+				message.setData(bundle);
+				message.what = AUTHORIZE_EXCEPTION;
+				handler.sendMessage(message);
+			}
+			
+			@Override
+			public void onError(DialogError e) {
+				Bundle bundle = new Bundle();
+				bundle.putString("message", e.getMessage());
+				Message message = new Message();
+				message.setData(bundle);
+				message.what = AUTHORIZE_ERROR;
+				handler.sendMessage(message);
+			}
+			
+			@Override
+			public void onComplete(final Bundle values) {
+				final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(activity);
+				
+				new Thread() {
+
+					@Override
+					public void run() {
+						String token = values.getString("access_token");
+						String expiresin = values.getString("expires_in");
+						prefs.edit()
+							.putString(WeiboUtils.ACCESS_TOKEN, token)
+							.putString(WeiboUtils.EXPIRES_IN, expiresin)
+							.commit();
+						
+						JSONObject userdetail = WeiboUtils.getUserDetail(activity);
+						String username = prefs.getString(WeiboUtils.USER_SCREEN_NAME, "WRONGNAME");
+						try {
+							username = userdetail.getString("screen_name");
+						} catch (JSONException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						} catch (NullPointerException e) {
+							// TODO: handle exception
+						}
+						prefs.edit().putString(WeiboUtils.USER_SCREEN_NAME, username).commit();
+						
+						
+						Message message = new Message();
+						message.what = AUTHORIZE_COMPLETE;
+						Bundle bundle = new Bundle();
+						bundle.putString(ACCESS_TOKEN, token);
+						bundle.putString(EXPIRES_IN, expiresin);
+						handler.sendMessage(message);
+					}
+					
+				}.start();
+			}
+			
+			@Override
+			public void onCancel() {
+				Message message = new Message();
+				message.what = AUTHORIZE_CANCEL;
+				handler.sendMessage(message);
+			}
+		});
 	}
 	
 	public static JSONObject getUserDetail(Activity activity) {
@@ -101,4 +179,31 @@ public class WeiboUtils {
 		}
 		return ret;
 	}
+	
+	class GetUserDetailThread extends Thread {
+		
+		Activity activity;
+		SharedPreferences prefs;
+		public GetUserDetailThread(Activity activity, SharedPreferences prefs) {
+			this.activity = activity;
+			this.prefs = prefs;
+		}
+		
+		@Override
+		public void run() {
+			JSONObject userdetail = WeiboUtils.getUserDetail(activity);
+			String username = prefs.getString(WeiboUtils.USER_SCREEN_NAME, "WRONGNAME");
+			try {
+				username = userdetail.getString("screen_name");
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (NullPointerException e) {
+				// TODO: handle exception
+			}
+			prefs.edit().putString(WeiboUtils.USER_SCREEN_NAME, username).commit();
+		}
+		
+	}
+	
 }

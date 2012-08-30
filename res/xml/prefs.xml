@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
-    <Preference android:key="prefs_bounded_weibo" android:title="已绑定微博名"/>
+    <PreferenceCategory android:title="@string/prefs_category_weibo">
+        <Preference android:key="prefs_bounded_weibo" android:title="@string/prefs_unbound_weibo" android:summary="@string/prefs_click_to_bound_weibo"/>
+    </PreferenceCategory>
     
 
 </PreferenceScreen>
