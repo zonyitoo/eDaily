@@ -17,18 +17,54 @@
             android:padding="10dp"
             android:text="Weibo Content"
             android:textSize="20sp" />
+        
+        <TextView 
+            android:id="@+id/repost"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:autoLink="web"
+            android:linksClickable="true"
+            android:padding="15dp"
+            android:textSize="15sp"
+            android:text="REPOST"
+            android:visibility="invisible"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal" >
-
-            <TextView
-                android:id="@+id/time"
-                android:layout_width="match_parent"
+			
+            <LinearLayout android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="5dp"
-                android:text="TIME" />
+                android:orientation="horizontal">
+                <TextView android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:text="At: "/>
+	            <TextView
+	                android:id="@+id/time"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:text="TIME" />
+            </LinearLayout>
+            
+            <LinearLayout android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="right">
+                
+                <TextView android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Re: "/>
+                <TextView android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/repost_number"/>
+                <TextView android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Co: "/>
+                <TextView android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/comment_number"/>
+            </LinearLayout>
         </LinearLayout>
         
         
