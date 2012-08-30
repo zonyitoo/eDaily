@@ -11,5 +11,6 @@
     <string name="title_activity_spitslot">吐槽</string>
     <string name="title_activity_visual">视觉</string>
     <string name="title_activity_weibo">微博</string>
+    <string name="title_activity_weibodetail">微博</string>
     
 </resources>

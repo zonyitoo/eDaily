@@ -10,5 +10,6 @@
     <string name="title_activity_spitslot">Spits Lot</string>
     <string name="title_activity_visual">Visual</string>
     <string name="title_activity_weibo">Weibo</string>
+    <string name="title_activity_weibodetail">Weibo</string>
 
 </resources>

@@ -9,6 +9,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -31,6 +32,8 @@ public class WeiboListFragment extends SherlockListFragment {
 	static final String[] EDAILY_TIMELINE_FROM = {"text"};
 	static final int[] TO = {R.id.content};
 	
+	static int edailypage = 1;
+	
 	Handler timelineDataHandler = new Handler() {
 
 		@Override
@@ -42,7 +45,8 @@ public class WeiboListFragment extends SherlockListFragment {
 				for (int i = 0; i < statuses.length(); ++ i) {
 					JSONObject obj = statuses.getJSONObject(i);
 					HashMap<String, Object> hashmap = new HashMap<String, Object>();
-					hashmap.put(EDAILY_TIMELINE_FROM[0], obj.get("text"));
+					hashmap.put("text", obj.getString("text"));
+					hashmap.put("id", obj.getString("id"));
 					edailyTimelineArrayList.add(hashmap);
 				}
 				
@@ -82,8 +86,10 @@ public class WeiboListFragment extends SherlockListFragment {
 
 	@Override
 	public void onListItemClick(ListView l, View v, int position, long id) {
-		// TODO Auto-generated method stub
-		super.onListItemClick(l, v, position, id);
+		Intent intent = new Intent(getActivity(), WeiboDetailActivity.class);
+		intent.putExtra("id", (String) edailyTimelineArrayList.get(position).get("id"));
+		intent.putExtra("text", (String) edailyTimelineArrayList.get(position).get("text"));
+		startActivity(intent);
 	}
 
 	@Override
@@ -104,7 +110,7 @@ public class WeiboListFragment extends SherlockListFragment {
 	
 	private void showEdailyTimeline() {
 		edailyTimelineArrayList = new ArrayList<Map<String,Object>>();
-		new GetTimelineThread(EDAILY_UID).start();
+		new GetTimelineThread(EDAILY_UID, edailypage).start();
 	}
 
 	@Override
@@ -117,14 +123,16 @@ public class WeiboListFragment extends SherlockListFragment {
 	class GetTimelineThread extends Thread {
 		
 		String uid;
+		int getpage;
 		
-		public GetTimelineThread(String uid) {
+		public GetTimelineThread(String uid, int page) {
 			this.uid = uid;
+			this.getpage = page;
 		}
 		
 		@Override
 		public void run() {
-			JSONObject timeline = WeiboUtils.getUserTimeline(getActivity(), uid);
+			JSONObject timeline = WeiboUtils.getUserTimeline(getActivity(), uid, getpage);
 			if (timeline != null) {
 				Message message = new Message();
 				Bundle data = new Bundle();

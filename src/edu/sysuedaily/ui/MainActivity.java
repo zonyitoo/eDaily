@@ -57,7 +57,7 @@ public class MainActivity extends SherlockActivity implements OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         
-        headlinePager = (ViewPager) findViewById(R.id.viewpager_news_activity_main);
+        headlinePager = (ViewPager) findViewById(R.id.pager);
         
         attitudeImageView = (ImageView) findViewById(R.id.attitude_img);
         attitudeImageView.setOnClickListener(this);
@@ -68,7 +68,7 @@ public class MainActivity extends SherlockActivity implements OnClickListener {
         spitslotImageView = (ImageView) findViewById(R.id.spitslot_img);
         spitslotImageView.setOnClickListener(this);
         
-        newsLayout = (RelativeLayout) findViewById(R.id.relativelayout_news_activity_main);
+        newsLayout = (RelativeLayout) findViewById(R.id.head_news);
         
         headDots = new ArrayList<View>();
         headDots.add(findViewById(R.id.dot0));
