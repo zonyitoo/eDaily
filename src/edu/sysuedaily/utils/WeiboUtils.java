@@ -3,6 +3,7 @@ package edu.sysuedaily.utils;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.R.integer;
 import android.app.Activity;
 
 import com.weibo.net.Weibo;
@@ -58,13 +59,14 @@ public class WeiboUtils {
 		return retJSON;
 	}
 	
-	public static JSONObject getUserTimeline(Activity activity, String uid) {
+	public static JSONObject getUserTimeline(Activity activity, String uid, int page) {
 		JSONObject ret = null;
 		
 		String url = Weibo.SERVER + "statuses/user_timeline.json";
         WeiboParameters bundle = new WeiboParameters();
         bundle.add("source", Weibo.getAppKey());
         bundle.add("uid", uid);
+        bundle.add("page", Integer.toString(page));
         Weibo weibo = Weibo.getInstance();
         try {
 			String rlt = weibo.request(activity, url, bundle, "GET", weibo.getAccessToken());
@@ -77,6 +79,26 @@ public class WeiboUtils {
 			e.printStackTrace();
 		}
 		
+		return ret;
+	}
+	
+	public static JSONObject showWeibo(Activity activity, String weiboid) {
+		JSONObject ret = null;
+		String url = Weibo.SERVER + "statused/show.json";
+		WeiboParameters bundle = new WeiboParameters();
+		bundle.add("source", Weibo.getAppKey());
+		bundle.add("id", weiboid);
+		Weibo weibo = Weibo.getInstance();
+		try {
+			String rlt = weibo.request(activity, url, bundle, "GET", weibo.getAccessToken());
+			ret = new JSONObject(rlt);
+		} catch (WeiboException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return ret;
 	}
 }

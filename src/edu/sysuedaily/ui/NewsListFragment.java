@@ -8,8 +8,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
 
 import com.actionbarsherlock.app.SherlockListFragment;
 
@@ -27,13 +29,15 @@ public class NewsListFragment extends SherlockListFragment {
 		
 		return fragment;
 	}
+
 	
-	
-	
+
 	@Override
-	public void onCreate(Bundle savedInstanceState) {
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
 		
-		super.onCreate(savedInstanceState);
+		//return inflater.inflate(R.layout.fragment_news, container, false);
+		return super.onCreateView(inflater, container, savedInstanceState);
 	}
 
 

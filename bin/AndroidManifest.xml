@@ -72,6 +72,12 @@
             android:label="@string/title_activity_spitslot"
             android:screenOrientation="portrait">
         </activity>
+        
+        <activity 
+            android:name=".ui.WeiboDetailActivity"
+            android:label="@string/title_activity_weibodetail"
+            android:screenOrientation="portrait">
+        </activity>
     </application>
     
 	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
