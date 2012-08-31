@@ -20,6 +20,7 @@ import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.MenuItem;
 
 import edu.sysuedaily.R;
+import edu.sysuedaily.utils.Utility;
 import edu.sysuedaily.utils.WeiboUtils;
 
 public class WeiboDetailActivity extends SherlockActivity {
@@ -72,9 +73,9 @@ public class WeiboDetailActivity extends SherlockActivity {
 		Intent intent = getIntent();
 		String weiboid = intent.getExtras().getString("id");
 		String text = intent.getExtras().getString("text");
-		contenTextView.setText(text);
+		contenTextView.setText(Utility.markWeiboAtAndTrend(text));
 		
-		new ShowWeiboThread(weiboid).start();
+		//new ShowWeiboThread(weiboid).start();
 		
 		ActionBar actionBar = getSupportActionBar();
 		actionBar.setDisplayHomeAsUpEnabled(true);
