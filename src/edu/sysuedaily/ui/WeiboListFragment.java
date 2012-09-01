@@ -13,49 +13,66 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AbsListView;
+import android.widget.AbsListView.OnScrollListener;
 import android.widget.ListView;
-import android.widget.SimpleAdapter;
+import android.widget.RelativeLayout;
 
 import com.actionbarsherlock.app.SherlockListFragment;
 
 import edu.sysuedaily.R;
+import edu.sysuedaily.utils.Utility;
+import edu.sysuedaily.utils.WeiboListAdapter;
 import edu.sysuedaily.utils.WeiboUtils;
 
 public class WeiboListFragment extends SherlockListFragment {
 
 	public static final String SELECTED_PAGE = "selected_page";
 	public static final String EDAILY_UID = "1899452321";
-	
+
 	static final String TIMELINE_DATA = "timeline_data";
-	
-	static final String[] EDAILY_TIMELINE_FROM = {"text"};
-	static final int[] TO = {R.id.content};
-	
+
 	static int edailypage = 1;
-	
+
 	Handler timelineDataHandler = new Handler() {
 
 		@Override
 		public void handleMessage(Message msg) {
 			try {
-				JSONObject timeline = new JSONObject(msg.getData().getString(TIMELINE_DATA));
+				JSONObject timeline = new JSONObject(msg.getData().getString(
+						TIMELINE_DATA));
 				JSONArray statuses = timeline.getJSONArray("statuses");
-				
-				for (int i = 0; i < statuses.length(); ++ i) {
+
+				for (int i = 0; i < statuses.length(); ++i) {
 					JSONObject obj = statuses.getJSONObject(i);
+					JSONObject user = obj.getJSONObject("user");
 					HashMap<String, Object> hashmap = new HashMap<String, Object>();
 					hashmap.put("text", obj.getString("text"));
 					hashmap.put("id", obj.getString("id"));
+					hashmap.put("userid", user.getString("id"));
+					hashmap.put("screen_name", user.getString("screen_name"));
+					if (obj.has("retweeted_status")) {
+						JSONObject retweet = obj
+								.getJSONObject("retweeted_status");
+						hashmap.put("retweet_text", retweet.getString("text"));
+						hashmap.put("retweet_userid",
+								retweet.getJSONObject("user").getString("id"));
+						hashmap.put("retweet_id", retweet.getString("id"));
+						hashmap.put("retweet_screen_name", retweet
+								.getJSONObject("user").getString("screen_name"));
+					}
+
 					edailyTimelineArrayList.add(hashmap);
 				}
-				
-				SimpleAdapter adapter = new SimpleAdapter(getActivity(), 
-						edailyTimelineArrayList, 
-						R.layout.listcontent_activity_weibo,
-						EDAILY_TIMELINE_FROM,
-						TO);
+
+				WeiboListAdapter adapter = new WeiboListAdapter(getActivity(),
+						edailyTimelineArrayList);
+
 				setListAdapter(adapter);
+
+				getListView().setSelection(currentListHeadPos);
 			} catch (JSONException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -64,12 +81,14 @@ public class WeiboListFragment extends SherlockListFragment {
 			}
 			super.handleMessage(msg);
 		}
-		
+
 	};
-	
+
 	int page;
-	ArrayList<Map<String, Object>> edailyTimelineArrayList = null;
-	
+	ArrayList<Map<String, Object>> edailyTimelineArrayList = new ArrayList<Map<String, Object>>();
+
+	int currentListHeadPos = 0;
+
 	public static WeiboListFragment newInstant(int page) {
 		WeiboListFragment fragment = new WeiboListFragment();
 		Bundle args = new Bundle();
@@ -77,24 +96,26 @@ public class WeiboListFragment extends SherlockListFragment {
 		fragment.setArguments(args);
 		return fragment;
 	}
-	
+
 	@Override
 	public void onAttach(Activity activity) {
-		
+
 		super.onAttach(activity);
 	}
 
 	@Override
 	public void onListItemClick(ListView l, View v, int position, long id) {
 		Intent intent = new Intent(getActivity(), WeiboDetailActivity.class);
-		intent.putExtra("id", (String) edailyTimelineArrayList.get(position).get("id"));
-		intent.putExtra("text", (String) edailyTimelineArrayList.get(position).get("text"));
+		intent.putExtra("id", (String) edailyTimelineArrayList.get(position)
+				.get("id"));
+		intent.putExtra("text", (String) edailyTimelineArrayList.get(position)
+				.get("text"));
 		startActivity(intent);
 	}
 
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
-		
+
 		page = getArguments().getInt(SELECTED_PAGE);
 		switch (page) {
 		case 0:
@@ -105,12 +126,40 @@ public class WeiboListFragment extends SherlockListFragment {
 			break;
 		}
 
+		RelativeLayout footer = (RelativeLayout) LayoutInflater.from(
+				getActivity()).inflate(R.layout.listfooter_load, null);
+		getListView().addFooterView(footer);
+		getListView().setOnScrollListener(new OnScrollListener() {
+
+			@Override
+			public void onScrollStateChanged(AbsListView view, int scrollState) {
+				if (view.getLastVisiblePosition() == view.getCount() - 1) {
+					switch (page) {
+					case 0:
+						showEdailyTimeline();
+						break;
+
+					default:
+						break;
+					}
+				}
+
+			}
+
+			@Override
+			public void onScroll(AbsListView view, int firstVisibleItem,
+					int visibleItemCount, int totalItemCount) {
+				currentListHeadPos = view.getFirstVisiblePosition();
+
+			}
+		});
+
 		super.onActivityCreated(savedInstanceState);
 	}
-	
+
 	private void showEdailyTimeline() {
-		edailyTimelineArrayList = new ArrayList<Map<String,Object>>();
-		new GetTimelineThread(EDAILY_UID, edailypage).start();
+		new GetTimelineThread(EDAILY_UID, edailypage++).start();
+
 	}
 
 	@Override
@@ -119,20 +168,20 @@ public class WeiboListFragment extends SherlockListFragment {
 		super.onCreate(savedInstanceState);
 	}
 
-	
 	class GetTimelineThread extends Thread {
-		
+
 		String uid;
 		int getpage;
-		
+
 		public GetTimelineThread(String uid, int page) {
 			this.uid = uid;
 			this.getpage = page;
 		}
-		
+
 		@Override
 		public void run() {
-			JSONObject timeline = WeiboUtils.getUserTimeline(getActivity(), uid, getpage);
+			JSONObject timeline = WeiboUtils.getUserTimeline(getActivity(),
+					uid, getpage);
 			if (timeline != null) {
 				Message message = new Message();
 				Bundle data = new Bundle();
@@ -141,7 +190,7 @@ public class WeiboListFragment extends SherlockListFragment {
 				timelineDataHandler.sendMessage(message);
 			}
 		}
-		
+
 	}
-	
+
 }

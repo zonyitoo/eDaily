@@ -160,9 +160,9 @@ public class WeiboUtils {
 		return ret;
 	}
 	
-	public static JSONObject showWeibo(Activity activity, String weiboid) {
+	public static JSONObject status_show(Activity activity, String weiboid) {
 		JSONObject ret = null;
-		String url = Weibo.SERVER + "statused/show.json";
+		String url = Weibo.SERVER + "statuses/show.json";
 		WeiboParameters bundle = new WeiboParameters();
 		bundle.add("source", Weibo.getAppKey());
 		bundle.add("id", weiboid);

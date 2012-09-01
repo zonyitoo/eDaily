@@ -6,15 +6,18 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 import android.content.Intent;
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
+import android.view.Window;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
@@ -78,7 +81,7 @@ public class MainActivity extends SherlockActivity implements OnClickListener {
         headDots.add(findViewById(R.id.dot4));
         
         int scrwidth = getWindowManager().getDefaultDisplay().getWidth();
-        LinearLayout.LayoutParams newsLayoutParams = (android.widget.LinearLayout.LayoutParams) newsLayout.getLayoutParams();
+        LinearLayout.LayoutParams newsLayoutParams = (LinearLayout.LayoutParams) newsLayout.getLayoutParams();
         newsLayoutParams.height = scrwidth / 3 * 2;
         newsLayout.setLayoutParams(newsLayoutParams);
         RelativeLayout.LayoutParams headlinePagerLayoutParams = (android.widget.RelativeLayout.LayoutParams) headlinePager.getLayoutParams();
