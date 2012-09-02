@@ -25,7 +25,7 @@ public class SplashActivity extends Activity {
 				SplashActivity.this.finish();
 				
 			}
-		}, 2, TimeUnit.SECONDS);
+		}, 1, TimeUnit.SECONDS);
 		
 	}
 
