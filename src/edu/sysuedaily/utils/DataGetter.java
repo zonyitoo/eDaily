@@ -7,9 +7,6 @@ import java.io.PrintWriter;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 import javax.net.ssl.HttpsURLConnection;
 
@@ -19,7 +16,21 @@ import org.json.JSONObject;
 import android.os.AsyncTask;
 
 public abstract class DataGetter {
-
+	
+	protected static String SERVER_ADDR = "";
+	
+	URL url;
+	
+	public DataGetter(String urlstr) {
+		url = null;
+		try {
+			url = new URL(urlstr);
+		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 	abstract public void getListData(int page, int pageSize,
 			OnCompleteListener listener);
 
@@ -30,22 +41,23 @@ public abstract class DataGetter {
 	}
 
 	protected class DataParams {
-
-		private URL url;
-		private JSONObject params;
-
-		public DataParams(String url, JSONObject params)
-				throws MalformedURLException {
-			this.url = new URL(url);
-			this.params = params;
+		JSONObject jsonObject;
+		
+		public DataParams() {
+			jsonObject = new JSONObject();
 		}
-
-		public URL getURL() {
-			return url;
+		
+		public void put(String key, Object value) {
+			try {
+				jsonObject.put(key, value);
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
-
-		public JSONObject getParams() {
-			return params;
+		
+		public JSONObject getJSONObject() {
+			return jsonObject;
 		}
 	}
 
@@ -56,7 +68,7 @@ public abstract class DataGetter {
 		protected JSONObject doInBackground(DataParams... params) {
 			JSONObject result = null;
 			try {
-				URL url = params[0].getURL();
+				
 				HttpsURLConnection connection = (HttpsURLConnection) url
 						.openConnection();
 				connection.setRequestMethod("GET");
@@ -69,7 +81,7 @@ public abstract class DataGetter {
 				PrintWriter writer = new PrintWriter(
 						connection.getOutputStream());
 				writer.print("data="
-						+ URLEncoder.encode(params[0].getParams().toString()));
+						+ URLEncoder.encode(params[0].getJSONObject().toString()));
 				writer.flush();
 
 				InputStreamReader reader = new InputStreamReader(
