@@ -23,7 +23,6 @@ import android.widget.RelativeLayout;
 import com.actionbarsherlock.app.SherlockListFragment;
 
 import edu.sysuedaily.R;
-import edu.sysuedaily.utils.Utility;
 import edu.sysuedaily.utils.WeiboListAdapter;
 import edu.sysuedaily.utils.WeiboUtils;
 
@@ -89,6 +88,8 @@ public class WeiboListFragment extends SherlockListFragment {
 
 	int currentListHeadPos = 0;
 
+	RelativeLayout listFooter;
+
 	public static WeiboListFragment newInstant(int page) {
 		WeiboListFragment fragment = new WeiboListFragment();
 		Bundle args = new Bundle();
@@ -126,9 +127,9 @@ public class WeiboListFragment extends SherlockListFragment {
 			break;
 		}
 
-		RelativeLayout footer = (RelativeLayout) LayoutInflater.from(
-				getActivity()).inflate(R.layout.listfooter_load, null);
-		getListView().addFooterView(footer);
+		listFooter = (RelativeLayout) LayoutInflater.from(getActivity())
+				.inflate(R.layout.listfooter_load, null);
+		getListView().addFooterView(listFooter);
 		getListView().setOnScrollListener(new OnScrollListener() {
 
 			@Override

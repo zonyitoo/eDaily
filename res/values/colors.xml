@@ -2,4 +2,5 @@
 
 <resources>
 	<drawable name="ab_bg_black">#dd000000</drawable>
+	<drawable name="ab_bg_green_opaque">#008c43</drawable>
 </resources>

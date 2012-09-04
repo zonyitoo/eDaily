@@ -6,6 +6,8 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.os.Handler;
@@ -23,6 +25,7 @@ import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
+import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
@@ -80,14 +83,6 @@ public class MainActivity extends SherlockActivity implements OnClickListener {
         headDots.add(findViewById(R.id.dot3));
         headDots.add(findViewById(R.id.dot4));
         
-        int scrwidth = getWindowManager().getDefaultDisplay().getWidth();
-        LinearLayout.LayoutParams newsLayoutParams = (LinearLayout.LayoutParams) newsLayout.getLayoutParams();
-        newsLayoutParams.height = scrwidth / 3 * 2;
-        newsLayout.setLayoutParams(newsLayoutParams);
-        RelativeLayout.LayoutParams headlinePagerLayoutParams = (android.widget.RelativeLayout.LayoutParams) headlinePager.getLayoutParams();
-        headlinePagerLayoutParams.height = scrwidth / 3 * 2;
-        headlinePager.setLayoutParams(headlinePagerLayoutParams);
-        
         headlinePager.setOnPageChangeListener(new OnPageChangeListener() {
 			
 			public void onPageSelected(int position) {
@@ -108,6 +103,9 @@ public class MainActivity extends SherlockActivity implements OnClickListener {
 		});
         
         headlinePager.setAdapter(new HeadPagerAdapter());
+        
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setBackgroundDrawable(getResources().getDrawable(R.drawable.ab_bg_green_opaque));
     }
     
     @Override
@@ -152,7 +150,7 @@ public class MainActivity extends SherlockActivity implements OnClickListener {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		System.out.println(item.getTitle());
 		if (item.getTitle().equals("SEND"))
-			;
+			startActivity(new Intent(this, ContactUsActivity.class));
 		else if (item.getTitle().equals("MENU"))
 			startActivity(new Intent(this, PreferencesActivity.class));
 		
@@ -163,6 +161,14 @@ public class MainActivity extends SherlockActivity implements OnClickListener {
     
     private class HeadPagerAdapter extends PagerAdapter {
 
+    	Bitmap[] pics = {
+    			BitmapFactory.decodeResource(getResources(), R.drawable.a),
+    			BitmapFactory.decodeResource(getResources(), R.drawable.b),
+    			BitmapFactory.decodeResource(getResources(), R.drawable.c),
+    			BitmapFactory.decodeResource(getResources(), R.drawable.d),
+    			BitmapFactory.decodeResource(getResources(), R.drawable.loading)
+    	};
+    	
 		@Override
 		public int getCount() {
 			// TODO Auto-generated method stub
@@ -178,7 +184,7 @@ public class MainActivity extends SherlockActivity implements OnClickListener {
 		@Override
 		public Object instantiateItem(View container, int position) {
 			ImageView imageView = new ImageView(MainActivity.this);
-			imageView.setImageResource(R.drawable.loading);
+			imageView.setImageBitmap(pics[position]);
 			imageView.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
 			imageView.setScaleType(ScaleType.CENTER_CROP);
 			imageView.setOnClickListener(new OnClickListener() {

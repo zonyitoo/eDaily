@@ -7,7 +7,7 @@
     <RelativeLayout 
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="0.01"
+        android:layout_weight="0.3"
         android:id="@+id/head_news">
         
         <android.support.v4.view.ViewPager
@@ -72,19 +72,21 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
-        android:layout_weight="2">
+        android:layout_weight="0.4"
+        android:layout_marginTop="2dp">
         
         <RelativeLayout 
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:layout_marginRight="1dp">
 
             <ImageView 
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/attitude_img"
                 android:scaleType="centerCrop"
-                android:src="@drawable/loading"/>
+                android:src="@drawable/attitude"/>
             
             <TextView 
                 android:layout_width="wrap_content"
@@ -96,14 +98,15 @@
         <RelativeLayout 
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:layout_marginLeft="1dp">
             
             <ImageView 
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/weibo_img"
                 android:scaleType="centerCrop"
-                android:src="@drawable/loading"/>
+                android:src="@drawable/weibo"/>
             
             <TextView 
                 android:layout_width="wrap_content"
@@ -118,19 +121,21 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
-        android:layout_weight="2">
+        android:layout_weight="0.4"
+        android:layout_marginTop="2dp">
         
         <RelativeLayout 
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:layout_marginRight="1dp">
             
             <ImageView 
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/visual_img"
                 android:scaleType="centerCrop"
-                android:src="@drawable/loading"/>
+                android:src="@drawable/visual"/>
             
             <TextView 
                 android:layout_width="wrap_content"
@@ -143,14 +148,15 @@
         <RelativeLayout 
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:layout_marginLeft="1dp">
             
             <ImageView 
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/spitslot_img"
                 android:scaleType="centerCrop"
-                android:src="@drawable/loading"/>
+                android:src="@drawable/spitslot"/>
             
             <TextView 
                 android:layout_width="wrap_content"

@@ -28,6 +28,7 @@ public class NewsActivity extends SherlockFragmentActivity {
 		
 		actionBar = getSupportActionBar();
 		actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setBackgroundDrawable(getResources().getDrawable(R.drawable.ab_bg_green_opaque));
 		
 		viewPager.setAdapter(new NewsPagerAdapter(getSupportFragmentManager()));
 		titlePageIndicator.setViewPager(viewPager);
