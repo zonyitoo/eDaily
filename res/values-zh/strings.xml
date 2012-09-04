@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">逸仙新聞</string>
+    <string name="menu_settings">設置</string>
+    <string name="title_activity_main">逸仙新聞</string>
+    <string name="title_activity_news">逸仙新聞</string>
+    <string name="title_activity_newsdetail">新聞内容</string>
+    <string name="title_activity_preference">設置</string>
+    <string name="title_activity_attitude">態度</string>
+    <string name="title_activity_spitslot">吐槽</string>
+    <string name="title_activity_visual">視覺</string>
+    <string name="title_activity_weibo">微博</string>
+    <string name="title_activity_weibodetail">微博</string>
+    
+    <string name="prefs_category_weibo">微博賬号</string>
+    <string name="prefs_unbound_weibo">綁定微博</string>
+    <string name="prefs_click_to_unbound_weibo">點撃解除綁定微博</string>
+    <string name="prefs_click_to_bound_weibo">點撃綁定微博</string>
+</resources>

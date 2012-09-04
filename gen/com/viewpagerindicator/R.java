@@ -8,6 +8,9 @@
 package com.viewpagerindicator;
 
 public final class R {
+    public static final class array {
+        public static final int attitude_first_classification=0x7f0c0000;
+    }
     public static final class attr {
         /**  Specified if we are forcing an action item overflow menu. 
          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
@@ -1201,30 +1204,30 @@ containing a value of this type.
         public static final int abs__title=0x7f09001e;
         public static final int abs__titleDivider=0x7f09001f;
         public static final int abs__up=0x7f09000e;
-        public static final int attitude_img=0x7f090035;
+        public static final int attitude_img=0x7f090034;
         public static final int author=0x7f090043;
-        public static final int bottombar_contactus=0x7f09002d;
+        public static final int bottombar_contactus=0x7f09002b;
         public static final int btnClose=0x7f090053;
         public static final int btnSend=0x7f090054;
         public static final int comment=0x7f09004c;
         public static final int comment_number=0x7f090042;
         public static final int content=0x7f09003e;
         public static final int disableHome=0x7f09000c;
-        public static final int dot0=0x7f090030;
-        public static final int dot1=0x7f090031;
-        public static final int dot2=0x7f090032;
-        public static final int dot3=0x7f090033;
-        public static final int dot4=0x7f090034;
-        public static final int edit=0x7f09002c;
+        public static final int dot0=0x7f09002f;
+        public static final int dot1=0x7f090030;
+        public static final int dot2=0x7f090031;
+        public static final int dot3=0x7f090032;
+        public static final int dot4=0x7f090033;
+        public static final int edit=0x7f09002a;
         public static final int etEdit=0x7f09005c;
         public static final int flPic=0x7f090059;
         public static final int fragment_detail_activity_news=0x7f09003a;
         public static final int fragment_list_activity_news=0x7f090039;
         public static final int from=0x7f09003c;
-        public static final int head_news=0x7f09002e;
+        public static final int head_news=0x7f09002c;
         public static final int homeAsUp=0x7f090009;
         public static final int image=0x7f09003d;
-        public static final int indicator=0x7f09002a;
+        public static final int indicator=0x7f090038;
         public static final int ivDelPic=0x7f09005b;
         public static final int ivImage=0x7f09005a;
         public static final int listMode=0x7f090005;
@@ -1233,7 +1236,7 @@ containing a value of this type.
         public static final int menu_settings=0x7f090068;
         public static final int none=0x7f090000;
         public static final int normal=0x7f090004;
-        public static final int pager=0x7f09002b;
+        public static final int pager=0x7f09002d;
         public static final int pull_to_refresh_header=0x7f09004d;
         public static final int pull_to_refresh_image=0x7f09004f;
         public static final int pull_to_refresh_progress=0x7f09004e;
@@ -1252,17 +1255,17 @@ containing a value of this type.
         public static final int showCustom=0x7f09000b;
         public static final int showHome=0x7f090008;
         public static final int showTitle=0x7f09000a;
-        public static final int spitslot_img=0x7f090038;
+        public static final int spitslot_img=0x7f090037;
         public static final int tabMode=0x7f090006;
         public static final int text=0x7f090046;
         public static final int time=0x7f090040;
-        public static final int title=0x7f09002f;
+        public static final int title=0x7f09002e;
         public static final int triangle=0x7f090001;
         public static final int tv_text_limit=0x7f090058;
         public static final int underline=0x7f090002;
         public static final int useLogo=0x7f090007;
-        public static final int visual_img=0x7f090037;
-        public static final int weibo_img=0x7f090036;
+        public static final int visual_img=0x7f090036;
+        public static final int weibo_img=0x7f090035;
         public static final int weibo_name=0x7f090045;
         public static final int weibosdk_btnClose=0x7f09005e;
         public static final int weibosdk_btnSend=0x7f09005f;
@@ -1306,24 +1309,24 @@ containing a value of this type.
         public static final int abs__screen_action_bar_overlay=0x7f030011;
         public static final int abs__screen_simple=0x7f030012;
         public static final int abs__screen_simple_overlay_action_mode=0x7f030013;
-        public static final int activity_attitude=0x7f030014;
-        public static final int activity_contactus=0x7f030015;
-        public static final int activity_main=0x7f030016;
-        public static final int activity_news=0x7f030017;
-        public static final int activity_newsdetail=0x7f030018;
-        public static final int activity_spitslot=0x7f030019;
-        public static final int activity_splash=0x7f03001a;
-        public static final int activity_visual=0x7f03001b;
-        public static final int activity_weibo=0x7f03001c;
-        public static final int activity_weibodetail=0x7f03001d;
-        public static final int fragment_news=0x7f03001e;
-        public static final int listcontent_activity_attitude=0x7f03001f;
-        public static final int listcontent_activity_news=0x7f030020;
-        public static final int listcontent_activity_weibo=0x7f030021;
-        public static final int listcontent_header_activity_news=0x7f030022;
-        public static final int listfooter_load=0x7f030023;
-        public static final int news_listheader=0x7f030024;
-        public static final int pagercontent_activity_visual=0x7f030025;
+        public static final int activity_contactus=0x7f030014;
+        public static final int activity_main=0x7f030015;
+        public static final int activity_news=0x7f030016;
+        public static final int activity_newsdetail=0x7f030017;
+        public static final int activity_spitslot=0x7f030018;
+        public static final int activity_splash=0x7f030019;
+        public static final int activity_visual=0x7f03001a;
+        public static final int activity_weibo=0x7f03001b;
+        public static final int activity_weibodetail=0x7f03001c;
+        public static final int fragment_news=0x7f03001d;
+        public static final int listcontent_activity_attitude=0x7f03001e;
+        public static final int listcontent_activity_news=0x7f03001f;
+        public static final int listcontent_activity_weibo=0x7f030020;
+        public static final int listcontent_header_activity_news=0x7f030021;
+        public static final int listfooter_load=0x7f030022;
+        public static final int news_listheader=0x7f030023;
+        public static final int pagercontent_activity_visual=0x7f030024;
+        public static final int pagerlayout_activity_attitude=0x7f030025;
         public static final int pull_to_refresh_header=0x7f030026;
         public static final int share_mblog_view=0x7f030027;
         public static final int sherlock_spinner_dropdown_item=0x7f030028;
@@ -1331,7 +1334,7 @@ containing a value of this type.
         public static final int weibosdk_share_mblog_view=0x7f03002a;
     }
     public static final class menu {
-        public static final int activity_main=0x7f0c0000;
+        public static final int activity_main=0x7f0d0000;
     }
     public static final class string {
         /**  Content description for the action bar "home" affordance. [CHAR LIMIT=NONE] 

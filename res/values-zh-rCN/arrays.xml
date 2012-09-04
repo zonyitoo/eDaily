@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="attitude_first_classification">
+        <item>微议</item>
+        <item>论见</item>
+        <item>专栏</item>
+        <item>投票</item>
+    </string-array>
+</resources>

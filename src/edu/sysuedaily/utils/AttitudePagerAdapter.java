@@ -1,11 +1,11 @@
 package edu.sysuedaily.utils;
 
-import edu.sysuedaily.ui.AttitudeListFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentStatePagerAdapter;
+import edu.sysuedaily.ui.AttitudeListFragment;
 
-public class AttitudePagerAdapter extends FragmentPagerAdapter {
+public class AttitudePagerAdapter extends FragmentStatePagerAdapter {
 
 	AttitudeListFragment[] fragments = {null, null, null, null};
 	final String[] title = {"微议", "论见", "投票", "影评"};
@@ -17,7 +17,7 @@ public class AttitudePagerAdapter extends FragmentPagerAdapter {
 	@Override
 	public Fragment getItem(int arg0) {
 		if (fragments[arg0] == null)
-			fragments[arg0] = AttitudeListFragment.newInstant(arg0);
+			fragments[arg0] = AttitudeListFragment.newInstance(arg0);
 		
 		return fragments[arg0];
 	}

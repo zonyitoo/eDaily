@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="attitude_first_classification">
+        <item>Argue</item>
+        <item>Point of View</item>
+        <item>Special Column</item>
+        <item>Vote</item>
+    </string-array>
+</resources>

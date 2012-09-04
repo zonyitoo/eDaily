@@ -18,7 +18,7 @@ public class AttitudeListFragment extends SherlockListFragment {
 	
 	public static final String SELECTED_PAGE = "selected_page";
 	
-	public static AttitudeListFragment newInstant(int page) {
+	public static AttitudeListFragment newInstance(int page) {
 		AttitudeListFragment fragment = new AttitudeListFragment();
 		Bundle args = new Bundle();
 		args.putInt(SELECTED_PAGE, page);
