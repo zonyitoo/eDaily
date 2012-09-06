@@ -38,14 +38,20 @@ public abstract class BaseAsyncAdapter<T> extends BaseAdapter {
 	/**
 	 * 
 	 * @param context
-	 * @param view your list view or grid view
-	 * @param dataSet the dataSet, like ``ArrayList<NewsData>``
-	 * @param defaultImageViewId the default imageView id, since in most situation, you will only have one image in each
-	 * line of the ListView or GridView, so I only consider you have just one ImageView in each line, if more than one,
-	 * write this code in ``setImage`` and create a ``AsyncImageLoader`` in the constructor of subclasses
-	 * @param netStatus the current network status, it will determined it will load the image from net or cache
-	 * @param layoutId the layout id for each line of the GridView or ListView
-	 * @param defaultImageResourceId the default image resource id, if the image can't load successfully, it will load this image
+	 * @param view 
+	 * 		your list view or grid view
+	 * @param dataSet 
+	 * 		the dataSet, like ``ArrayList<NewsData>``
+	 * @param defaultImageViewId 
+	 * 		the default imageView id, since in most situation, you will only have one image in each
+	 * 		line of the ListView or GridView, so I only consider you have just one ImageView in each line, if more than one,
+	 * 		write this code in ``setImage`` and create a ``AsyncImageLoader`` in the constructor of subclasses
+	 * @param netStatus 
+	 * 		the current network status, it will determined it will load the image from net or cache
+	 * @param layoutId 
+	 * 		the layout id for each line of the GridView or ListView
+	 * @param defaultImageResourceId 
+	 * 		the default image resource id, if the image can't load successfully, it will load this image
 	 */
 	public BaseAsyncAdapter(final Context context, AbsListView view, ArrayList<T> dataSet, final int defaultImageViewId, 
 			boolean netStatus, int layoutId, int defaultImageResourceId) {
@@ -64,7 +70,7 @@ public abstract class BaseAsyncAdapter<T> extends BaseAdapter {
 	}
 	
 	/**
-	 * you can set more than one listener here
+	 * you can set more than one listeners here
 	 */
 	public abstract void setListener();
 	
