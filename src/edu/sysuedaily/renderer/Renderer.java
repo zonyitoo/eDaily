@@ -14,4 +14,7 @@ public abstract class Renderer<T> {
 	public abstract ArrayList<T> renderToList();
 	
 	public abstract T jsonToObject(JSONObject jsonObject);
+	
+	public abstract JSONObject getRenderJson();
+	
 }

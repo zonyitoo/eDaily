@@ -26,4 +26,10 @@ public class NewsCacheRenderer extends CacheRenderer<NewsData>{
 		return null;
 	}
 
+	@Override
+	public JSONObject getRenderJson() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

@@ -3,8 +3,10 @@ package edu.sysuedaily.asyncloader;
 import java.lang.ref.SoftReference;
 import java.util.HashMap;
 
+import edu.sysuedaily.cache.ImageCache;
 import edu.sysuedaily.request.RequestUtil;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.Handler;
 
@@ -17,6 +19,7 @@ public class AsyncImageLoader {
 	private int endLoadRow = 0;
 	
 	private boolean netStatus = false;
+	private Context context = null;
 	
 	private final Handler handler = new Handler();
 	private static HashMap<String, SoftReference<Bitmap>> ramImageCache = new HashMap<String, SoftReference<Bitmap>>();
@@ -27,8 +30,10 @@ public class AsyncImageLoader {
 		public void onError(Integer rowNum);
 	}
 	
-	public AsyncImageLoader(boolean netStatus) {
+	public AsyncImageLoader(boolean netStatus, Context context) {
 		this.netStatus = netStatus;
+		this.context = context;
+		
 	}
 	
 	public void setLoadRowLimit(int start, int end) {
@@ -156,7 +161,38 @@ public class AsyncImageLoader {
 	
 	private void loadImageFromCache(final Integer rowNum, String imageUrl, final ImageLoadListener listener, 
 			int requireSize) {
-		
+		try {
+			//Log.d(Constant.LOG_TAG, "in loadImageFromNet, the imageUrl is " + imageUrl);
+			if (imageUrl != null) {
+				final Bitmap bitmap = ImageCache.getImageCache(this.context).getCacheImage(imageUrl, requireSize);
+				if (bitmap != null) {
+					ramImageCache.put(imageUrl, new SoftReference<Bitmap>(bitmap));
+					//ImageCache.getImageCache().cacheImage(bitmap, imageUrl);
+					handler.post(new Runnable() {
+
+						@Override
+						public void run() {
+							// TODO Auto-generated method stub
+							listener.onImageLoad(rowNum, bitmap);
+						}
+					
+					});
+				}
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			// url is error
+			handler.post(new Runnable() {
+
+				@Override
+				public void run() {
+					// TODO Auto-generated method stub
+					listener.onError(rowNum);
+				}
+				
+			});
+		}
 	}
 	
 	public static void cleanRamCache() {

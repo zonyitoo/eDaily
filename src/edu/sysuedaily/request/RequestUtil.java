@@ -11,17 +11,7 @@ import android.util.Base64;
 import android.util.Log;
 
 public class RequestUtil {
-private static int callTime = 0;
-	
-	/**
-	 * Let the server return json string can be worked in the fucking org.json package
-	 * @param jsonString
-	 * @return
-	 */
-	public static String processJsonString(String jsonString) {
-		String replaceString = jsonString.replace("\\", "");
-		return replaceString.substring(1, replaceString.length() - 1);
-	}
+	private static int callTime = 0;
 	
 	public static String bitmapToBase64String(Bitmap bitmap) {
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
