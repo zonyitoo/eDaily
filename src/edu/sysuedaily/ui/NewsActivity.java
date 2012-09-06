@@ -9,7 +9,7 @@ import com.actionbarsherlock.view.MenuItem;
 import com.viewpagerindicator.TitlePageIndicator;
 
 import edu.sysuedaily.R;
-import edu.sysuedaily.utils.NewsPagerAdapter;
+import edu.sysuedaily.adapter.NewsPagerAdapter;
 
 public class NewsActivity extends SherlockFragmentActivity {
 	

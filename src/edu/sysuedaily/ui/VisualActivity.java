@@ -13,7 +13,7 @@ import com.actionbarsherlock.view.MenuItem;
 import com.viewpagerindicator.CirclePageIndicator;
 
 import edu.sysuedaily.R;
-import edu.sysuedaily.utils.VisualPagerAdapter;
+import edu.sysuedaily.adapter.VisualPagerAdapter;
 
 public class VisualActivity extends SherlockFragmentActivity {
 

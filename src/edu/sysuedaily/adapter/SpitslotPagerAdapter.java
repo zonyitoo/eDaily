@@ -1,4 +1,4 @@
-package edu.sysuedaily.utils;
+package edu.sysuedaily.adapter;
 
 import edu.sysuedaily.ui.SpitslotListFragment;
 import android.support.v4.app.Fragment;

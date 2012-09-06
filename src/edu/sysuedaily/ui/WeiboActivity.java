@@ -19,7 +19,7 @@ import com.weibo.net.AccessToken;
 import com.weibo.net.Weibo;
 
 import edu.sysuedaily.R;
-import edu.sysuedaily.utils.WeiboPagerAdapter;
+import edu.sysuedaily.adapter.WeiboPagerAdapter;
 import edu.sysuedaily.utils.WeiboUtils;
 
 public class WeiboActivity extends SherlockFragmentActivity {
