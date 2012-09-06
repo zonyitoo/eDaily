@@ -7,7 +7,7 @@ import edu.sysuedaily.ui.AttitudeListFragment;
 
 public class AttitudePagerAdapter extends FragmentStatePagerAdapter {
 
-	AttitudeListFragment[] fragments = {null, null, null, null};
+	Fragment[] fragments = {null, null, null, null};
 	final String[] title = {"微议", "论见", "投票", "影评"};
 	
 	public AttitudePagerAdapter(FragmentManager fm) {

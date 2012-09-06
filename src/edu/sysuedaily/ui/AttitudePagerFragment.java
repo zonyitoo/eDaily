@@ -1,6 +1,5 @@
 package edu.sysuedaily.ui;
 
-import android.R.integer;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;

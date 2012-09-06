@@ -1,170 +1,182 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<edu.sysuedaily.utils.MainScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:layout_height="match_parent" >
 
-    <RelativeLayout 
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="0.3"
-        android:id="@+id/head_news">
-        
-        <android.support.v4.view.ViewPager
-            android:id="@+id/pager"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:id="@+id/head_news"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">    	
-        </android.support.v4.view.ViewPager>
-    	
-        <TextView 
-            android:layout_width="wrap_content"
+            android:layout_height="200dp"
+            android:padding="10dp" >
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/pager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+            </android.support.v4.view.ViewPager>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:text="头条新闻News" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:background="#66000000"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingBottom="3dp"
+                android:paddingTop="3dp" >
+
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp"
+                    android:layout_weight="1.0"
+                    android:textSize="15dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4.0"
+                    android:gravity="center"
+                    android:orientation="horizontal" >
+
+                    <View
+                        android:id="@+id/dot0"
+                        style="@style/viewpager_dot_style"
+                        android:background="@drawable/dot_focused" />
+
+                    <View
+                        android:id="@+id/dot1"
+                        style="@style/viewpager_dot_style"
+                        android:background="@drawable/dot_normal" />
+
+                    <View
+                        android:id="@+id/dot2"
+                        style="@style/viewpager_dot_style"
+                        android:background="@drawable/dot_normal" />
+
+                    <View
+                        android:id="@+id/dot3"
+                        style="@style/viewpager_dot_style"
+                        android:background="@drawable/dot_normal" />
+
+                    <View
+                        android:id="@+id/dot4"
+                        style="@style/viewpager_dot_style"
+                        android:background="@drawable/dot_normal" />
+                </LinearLayout>
+            </LinearLayout>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:text="头条新闻News"/>
-    	
-        <LinearLayout android:layout_width="match_parent"
-		    android:layout_height="wrap_content"
-		    android:layout_alignParentBottom="true"
-		    android:orientation="horizontal"
-		    android:background="#66000000"
-		    android:gravity="center_vertical"
-		    android:paddingTop="3dp"
-		    android:paddingBottom="3dp">
-		    
-		    <TextView android:layout_width="match_parent"
-		        android:layout_height="25dp"
-		        android:layout_weight="1.0"
-		        android:id="@+id/title"
-		        android:textSize="15dp"/>
-		    
-		    <LinearLayout android:layout_width="match_parent"
-		        android:layout_height="wrap_content"
-		        android:layout_weight="4.0"
-		        android:orientation="horizontal"
-		        android:gravity="center">
-		        
-		        <View
-	                android:id="@+id/dot0"
-	                style="@style/viewpager_dot_style"
-	                android:background="@drawable/dot_focused" />
-		        <View
-	                android:id="@+id/dot1"
-	                style="@style/viewpager_dot_style"
-	                android:background="@drawable/dot_normal" />
-		        <View
-	                android:id="@+id/dot2"
-	                style="@style/viewpager_dot_style"
-	                android:background="@drawable/dot_normal" />
-		        <View
-	                android:id="@+id/dot3"
-	                style="@style/viewpager_dot_style"
-	                android:background="@drawable/dot_normal" />
-		        <View
-	                android:id="@+id/dot4"
-	                style="@style/viewpager_dot_style"
-	                android:background="@drawable/dot_normal" />
-		        
-		    </LinearLayout>
-		</LinearLayout>
-    </RelativeLayout>
-    
-    <LinearLayout 
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:layout_weight="0.4"
-        android:layout_marginTop="2dp">
-        
-        <RelativeLayout 
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_marginRight="1dp">
+            android:layout_marginBottom="10dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp" >
 
-            <ImageView 
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+            <ImageView
                 android:id="@+id/attitude_img"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:scaleType="centerCrop"
-                android:src="@drawable/attitude"/>
-            
-            <TextView 
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:text="态度Attitude"/>
-        </RelativeLayout>
-        
-        <RelativeLayout 
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_marginLeft="1dp">
-            
-            <ImageView 
+                android:src="@drawable/attitude" />
+
+            <TextView
+                android:id="@+id/attitude_text"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:text="“在实现城市升级的过程中，城市行政体制改革是最为关键的步骤。”新加坡国立大学东亚研究所所长郑永年昨天在广州论坛上说..." />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp" >
+
+            <ImageView
                 android:id="@+id/weibo_img"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:scaleType="centerCrop"
-                android:src="@drawable/weibo"/>
-            
-            <TextView 
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:text="微博Weibo"/>
-            
-        </RelativeLayout>
-    </LinearLayout>
-    
-    <LinearLayout 
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:layout_weight="0.4"
-        android:layout_marginTop="2dp">
-        
-        <RelativeLayout 
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_marginRight="1dp">
-            
-            <ImageView 
+                android:src="@drawable/weibo" />
+
+            <TextView
+                android:id="@+id/weibo_text"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:text="浙江卫视《中国好声音》进入第二轮“导师考核”阶段，昨晚播出庾澄庆队内考核，随着新一批“梦想秀”学员的诞生，原本已..." />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp" >
+
+            <ImageView
                 android:id="@+id/visual_img"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:scaleType="centerCrop"
-                android:src="@drawable/visual"/>
-            
-            <TextView 
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:text="视觉Visual"/>
-            
-        </RelativeLayout>
-        
-        <RelativeLayout 
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_marginLeft="1dp">
-            
-            <ImageView 
+                android:src="@drawable/visual" />
+
+            <TextView
+                android:id="@+id/visual_text"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/spitslot_img"
-                android:scaleType="centerCrop"
-                android:src="@drawable/spitslot"/>
-            
-            <TextView 
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:text="吐嘈What the fuck"/>
-            
-        </RelativeLayout>
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:text="经过超过14个小时的漫长旅行，5岁的小蕾终于回到了妈妈的怀抱，昨日中午母女辗转相见相拥而泣。前日22时29分..." />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp" >
+
+            <ImageView
+                android:id="@+id/spitslot_img"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/spitslot" />
+
+            <TextView
+                android:id="@+id/spitslt_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:text="1200多万进城务工人员子女终于可以参加异地高考。昨晚，民众千呼万唤的异地高考意见终于出炉———异地高考方案不是全国“一刀切”..." />
+        </LinearLayout>
     </LinearLayout>
 
-</LinearLayout>
+</edu.sysuedaily.utils.MainScrollView>
