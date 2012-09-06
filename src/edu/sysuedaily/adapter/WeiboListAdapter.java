@@ -1,4 +1,4 @@
-package edu.sysuedaily.utils;
+package edu.sysuedaily.adapter;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -12,6 +12,7 @@ import android.widget.BaseAdapter;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import edu.sysuedaily.R;
+import edu.sysuedaily.utils.Utility;
 
 public class WeiboListAdapter extends BaseAdapter {
 

@@ -23,7 +23,7 @@ import android.widget.RelativeLayout;
 import com.actionbarsherlock.app.SherlockListFragment;
 
 import edu.sysuedaily.R;
-import edu.sysuedaily.utils.WeiboListAdapter;
+import edu.sysuedaily.adapter.WeiboListAdapter;
 import edu.sysuedaily.utils.WeiboUtils;
 
 public class WeiboListFragment extends SherlockListFragment {

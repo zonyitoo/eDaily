@@ -1,4 +1,4 @@
-package edu.sysuedaily.utils;
+package edu.sysuedaily.adapter;
 
 import edu.sysuedaily.ui.NewsListFragment;
 import android.support.v4.app.Fragment;

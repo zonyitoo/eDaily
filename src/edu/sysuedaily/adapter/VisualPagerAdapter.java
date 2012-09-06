@@ -1,4 +1,4 @@
-package edu.sysuedaily.utils;
+package edu.sysuedaily.adapter;
 
 import java.util.ArrayList;
 import java.util.Map;

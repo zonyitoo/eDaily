@@ -10,7 +10,7 @@ import com.actionbarsherlock.view.MenuItem;
 import com.viewpagerindicator.TitlePageIndicator;
 
 import edu.sysuedaily.R;
-import edu.sysuedaily.utils.SpitslotPagerAdapter;
+import edu.sysuedaily.adapter.SpitslotPagerAdapter;
 
 public class SpitslotActivity extends SherlockFragmentActivity {
 

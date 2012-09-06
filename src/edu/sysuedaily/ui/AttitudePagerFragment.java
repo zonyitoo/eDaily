@@ -11,7 +11,7 @@ import com.actionbarsherlock.app.SherlockFragment;
 import com.viewpagerindicator.TitlePageIndicator;
 
 import edu.sysuedaily.R;
-import edu.sysuedaily.utils.AttitudePagerAdapter;
+import edu.sysuedaily.adapter.AttitudePagerAdapter;
 
 public class AttitudePagerFragment extends SherlockFragment {
 
