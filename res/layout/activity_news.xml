@@ -5,19 +5,15 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <!--
-	<ListView 
-	    android:layout_width="match_parent"
-	    android:layout_height="match_parent"
-	    android:id="@+id/listview_head_activity_news"/>
-    -->
-
     <com.viewpagerindicator.TitlePageIndicator
         android:id="@+id/indicator"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:padding="10dip"
-        app:selectedColor="#FF000000" />
+        android:padding="37dp"
+        android:background="#FFCAC7C2"
+        app:selectedColor="#FFFFFFFF"
+        android:textColor="#66FFFFFF"
+        android:textSize="16sp" />
 
     <android.support.v4.view.ViewPager
         android:id="@+id/pager"

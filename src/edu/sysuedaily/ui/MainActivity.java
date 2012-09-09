@@ -8,18 +8,15 @@ import java.util.concurrent.TimeUnit;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Rect;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
-import android.view.Window;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
@@ -35,10 +32,17 @@ import edu.sysuedaily.R;
 public class MainActivity extends SherlockActivity implements OnClickListener {
 	
 	ViewPager headlinePager;
+	
 	ImageView attitudeImageView;
 	ImageView weiboImageView;
 	ImageView visualImageView;
 	ImageView spitslotImageView;
+	
+	LinearLayout attitudeLinearLayout;
+	LinearLayout weiboLinearLayout;
+	LinearLayout visualLinearLayout;
+	LinearLayout spitslotLinearLayout;
+	
 	RelativeLayout newsLayout;
 
 	ArrayList<View> headDots;
@@ -66,13 +70,18 @@ public class MainActivity extends SherlockActivity implements OnClickListener {
         headlinePager = (ViewPager) findViewById(R.id.pager);
         
         attitudeImageView = (ImageView) findViewById(R.id.attitude_img);
-        attitudeImageView.setOnClickListener(this);
         weiboImageView = (ImageView) findViewById(R.id.weibo_img);
-        weiboImageView.setOnClickListener(this);
         visualImageView = (ImageView) findViewById(R.id.visual_img);
-        visualImageView.setOnClickListener(this);
         spitslotImageView = (ImageView) findViewById(R.id.spitslot_img);
-        spitslotImageView.setOnClickListener(this);
+        
+        attitudeLinearLayout = (LinearLayout) findViewById(R.id.linear_attitude);
+        attitudeLinearLayout.setOnClickListener(this);
+        weiboLinearLayout = (LinearLayout) findViewById(R.id.linear_weibo);
+        weiboLinearLayout.setOnClickListener(this);
+        visualLinearLayout = (LinearLayout) findViewById(R.id.linear_visual);
+        visualLinearLayout.setOnClickListener(this);
+        spitslotLinearLayout = (LinearLayout) findViewById(R.id.linear_spitslot);
+        spitslotLinearLayout.setOnClickListener(this);
         
         newsLayout = (RelativeLayout) findViewById(R.id.head_news);
         
@@ -211,16 +220,16 @@ public class MainActivity extends SherlockActivity implements OnClickListener {
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
-		case R.id.attitude_img:
+		case R.id.linear_attitude:
 			startActivity(new Intent(this, AttitudeActivity.class));
 			break;
-		case R.id.weibo_img:
+		case R.id.linear_weibo:
 			startActivity(new Intent(this, WeiboActivity.class));
 			break;
-		case R.id.visual_img:
+		case R.id.linear_visual:
 			startActivity(new Intent(this, VisualActivity.class));
 			break;
-		case R.id.spitslot_img:
+		case R.id.linear_spitslot:
 			startActivity(new Intent(this, SpitslotActivity.class));
 
 		default:

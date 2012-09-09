@@ -82,7 +82,7 @@ public class AttitudeListFragment extends SherlockListFragment {
 		setListAdapter(null);
 		
 		getListView()
-			.addHeaderView(LayoutInflater.from(getActivity()).inflate(R.layout.news_listheader, null));
+			.addHeaderView(LayoutInflater.from(getActivity()).inflate(R.layout.listcontent_header_activity_news, null));
 		
 		setListAdapter(adapter);
 		
