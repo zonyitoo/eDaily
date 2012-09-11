@@ -14,12 +14,12 @@ import com.actionbarsherlock.app.SherlockListFragment;
 
 import edu.sysuedaily.R;
 
-public class AttitudeListFragment extends SherlockListFragment {
+public class AttitudeOpinionFragment extends SherlockListFragment {
 	
 	public static final String SELECTED_PAGE = "selected_page";
 	
-	public static AttitudeListFragment newInstance(int page) {
-		AttitudeListFragment fragment = new AttitudeListFragment();
+	public static AttitudeOpinionFragment newInstance(int page) {
+		AttitudeOpinionFragment fragment = new AttitudeOpinionFragment();
 		Bundle args = new Bundle();
 		args.putInt(SELECTED_PAGE, page);
 		fragment.setArguments(args);
@@ -77,12 +77,12 @@ public class AttitudeListFragment extends SherlockListFragment {
 			}
 		}
 		SimpleAdapter adapter = new SimpleAdapter(getActivity(), arrayList2, 
-				R.layout.listcontent_activity_attitude, new String[] {"TITLE"}, new int[] {R.id.title});
+				R.layout.listcontent_opinion_activity_attitude, new String[] {"TITLE"}, new int[] {R.id.title});
 		
 		setListAdapter(null);
 		
 		getListView()
-			.addHeaderView(LayoutInflater.from(getActivity()).inflate(R.layout.listcontent_header_activity_news, null));
+			.addHeaderView(LayoutInflater.from(getActivity()).inflate(R.layout.listcontent_header_image_title, null));
 		
 		setListAdapter(adapter);
 		

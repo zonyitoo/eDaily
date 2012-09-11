@@ -2,36 +2,36 @@ package edu.sysuedaily.ui;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
-import android.widget.ArrayAdapter;
+import android.support.v4.view.ViewPager;
 
 import com.actionbarsherlock.app.ActionBar;
-import com.actionbarsherlock.app.ActionBar.OnNavigationListener;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.MenuItem;
+import com.viewpagerindicator.TitlePageIndicator;
 
 import edu.sysuedaily.R;
+import edu.sysuedaily.adapter.AttitudePagerAdapter;
 
-public class AttitudeActivity extends SherlockFragmentActivity implements
-		OnNavigationListener {
+public class AttitudeActivity extends SherlockFragmentActivity {
 
 	static Fragment[] fragments = { null, null, null, null };
-
+	
+	TitlePageIndicator indicator;
+	ViewPager pager;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
+		setContentView(R.layout.pagerlayout_activity_attitude);
+		
 		ActionBar actionBar = getSupportActionBar();
 		actionBar.setDisplayHomeAsUpEnabled(true);
-
-		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
-		ArrayAdapter<CharSequence> naviAdapter = ArrayAdapter
-				.createFromResource(actionBar.getThemedContext(),
-						R.array.attitude_first_classification,
-						R.layout.sherlock_spinner_item);
-		naviAdapter
-				.setDropDownViewResource(R.layout.sherlock_spinner_dropdown_item);
-		actionBar.setListNavigationCallbacks(naviAdapter, this);
+		
+		indicator = (TitlePageIndicator) findViewById(R.id.indicator);
+		pager = (ViewPager) findViewById(R.id.pager);
+		
+		pager.setAdapter(new AttitudePagerAdapter(getSupportFragmentManager()));
+		indicator.setViewPager(pager);
 	}
 
 	@Override
@@ -44,35 +44,6 @@ public class AttitudeActivity extends SherlockFragmentActivity implements
 		default:
 			break;
 		}
-
-		return true;
-	}
-
-	@Override
-	public boolean onNavigationItemSelected(int itemPosition, long itemId) {
-		FragmentTransaction transaction = getSupportFragmentManager()
-				.beginTransaction();
-		
-		Fragment fragment = null;
-		
-		if (fragments[itemPosition] == null) {
-			switch (itemPosition) {
-			case 0:
-			case 1:
-				fragment = AttitudeListFragment
-						.newInstance(itemPosition);
-				break;
-			case 2:
-			case 3:
-				fragment = AttitudePagerFragment
-						.newInstance(itemPosition);
-				break;
-			default:
-				break;
-			}
-		}
-
-		transaction.replace(android.R.id.content, fragment).commit();
 
 		return true;
 	}

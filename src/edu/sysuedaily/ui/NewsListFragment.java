@@ -88,7 +88,7 @@ public class NewsListFragment extends SherlockListFragment {
 		setListAdapter(null);
 		
 		getListView()
-			.addHeaderView(LayoutInflater.from(getActivity()).inflate(R.layout.listcontent_header_activity_news, null));
+			.addHeaderView(LayoutInflater.from(getActivity()).inflate(R.layout.listcontent_header_image_title, null));
 		
 		setListAdapter(adapter);
 		
