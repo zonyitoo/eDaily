@@ -11,6 +11,7 @@
     <string name="title_activity_visual">視覺</string>
     <string name="title_activity_weibo">微博</string>
     <string name="title_activity_weibodetail">微博</string>
+    <string name="title_activity_special">逸仙専欄</string>
     
     <string name="prefs_category_weibo">微博賬号</string>
     <string name="prefs_unbound_weibo">綁定微博</string>

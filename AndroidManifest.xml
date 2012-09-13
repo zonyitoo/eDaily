@@ -74,6 +74,11 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" >
         </activity>
+        <activity
+            android:name=".ui.SpecialActivity"
+            android:label="@string/title_activity_special"
+            android:screenOrientation="portrait" >
+        </activity>
     </application>
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" >
