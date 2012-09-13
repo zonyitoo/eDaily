@@ -32,6 +32,7 @@ public abstract class BaseAsyncAdapter<T> extends BaseAdapter {
 	private LayoutInflater inflater = null;
 	
 	protected View[] viewList = null;
+	protected boolean[] ifLoadBit = null;
 	
 	/**
 	 * 
@@ -63,8 +64,8 @@ public abstract class BaseAsyncAdapter<T> extends BaseAdapter {
 		setDefaultListener();
 		this.defaultImageResourceId = defaultImageResourceId;
 		this.viewList = new View[this.dataSet.size()];
-		
-		this.listOrGridView.setOnScrollListener(onScrollListener);
+		this.ifLoadBit = new boolean[this.dataSet.size()];
+		//this.listOrGridView.setOnScrollListener(onScrollListener);
 	}
 	
 	/**
@@ -135,19 +136,29 @@ public abstract class BaseAsyncAdapter<T> extends BaseAdapter {
 	public View getView(int position, View convertView, ViewGroup parent) { // called 16 times..
 		// TODO Auto-generated method stub
 		//Log.d(Constant.LOG_TAG, "in getView");
-		if (this.viewList[position] != null) {
+		//if (this.viewList[position] != null) {
 			//Log.d(Constant.LOG_TAG, "return from viewList");
+		//	return viewList[position];
+		//}
+		
+		//if (convertView == null) {
+		//	convertView = inflater.inflate(this.layoutId, parent, false);
+		//}
+		//setViewTag(position, convertView);
+		//setImage(position, convertView);
+		//bindView(position, convertView);
+		//this.viewList[position] = convertView;
+		setViewTag(position, viewList[position]);
+		if (ifLoadBit[position] == false) {
+			//Log.d(Constant.LOG_TAG, "load " + position);
+			bindView(position, viewList[position]);
+			setImage(position, viewList[position]);
+			ifLoadBit[position] = true;
 			return viewList[position];
 		}
-		
-		if (convertView == null) {
-			convertView = inflater.inflate(this.layoutId, parent, false);
+		else {
+			return viewList[position];
 		}
-		setViewTag(position, convertView);
-		setImage(position, convertView);
-		bindView(position, convertView);
-		this.viewList[position] = convertView;
-		return convertView;
 	}
 	
 	private void setViewTag(int position, View convertView) {
@@ -174,7 +185,7 @@ public abstract class BaseAsyncAdapter<T> extends BaseAdapter {
 				defaultImageLoader.lock();
 				break;
 			case AbsListView.OnScrollListener.SCROLL_STATE_IDLE:
-				setLoadImageLimit();
+				defaultImageLoader.unlock();
 				//loadImage();
 				break;
 			case AbsListView.OnScrollListener.SCROLL_STATE_TOUCH_SCROLL:
@@ -190,7 +201,6 @@ public abstract class BaseAsyncAdapter<T> extends BaseAdapter {
 		public void onScroll(AbsListView view, int firstVisibleItem,
 				int visibleItemCount, int totalItemCount) {
 			// TODO Auto-generated method stub
-			
 		}
 	};
 	

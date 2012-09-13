@@ -7,10 +7,10 @@
     <string name="title_activity_news">逸仙新闻</string>
     <string name="title_activity_newsdetail">新闻内容</string>
     <string name="title_activity_preference">设置</string>
-    <string name="title_activity_attitude">态度</string>
-    <string name="title_activity_spitslot">吐槽</string>
-    <string name="title_activity_visual">视觉</string>
-    <string name="title_activity_weibo">微博</string>
+    <string name="title_activity_attitude">逸仙态度</string>
+    <string name="title_activity_spitslot">逸仙吐槽</string>
+    <string name="title_activity_visual">逸仙视觉</string>
+    <string name="title_activity_weibo">逸仙微博</string>
     <string name="title_activity_weibodetail">微博</string>
     
     <string name="prefs_category_weibo">微博账号</string>

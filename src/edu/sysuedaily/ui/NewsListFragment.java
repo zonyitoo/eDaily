@@ -11,7 +11,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
-import android.widget.TextView;
 
 import com.actionbarsherlock.app.SherlockListFragment;
 
@@ -89,9 +88,10 @@ public class NewsListFragment extends SherlockListFragment {
 		setListAdapter(null);
 		
 		getListView()
-			.addHeaderView(LayoutInflater.from(getActivity()).inflate(R.layout.news_listheader, null));
+			.addHeaderView(LayoutInflater.from(getActivity()).inflate(R.layout.listcontent_header_image_title, null));
 		
 		setListAdapter(adapter);
+		
 		
 		super.onActivityCreated(savedInstanceState);
 	}
