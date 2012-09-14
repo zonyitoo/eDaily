@@ -11,6 +11,8 @@
     <string name="title_activity_visual">Visual</string>
     <string name="title_activity_weibo">Weibo</string>
     <string name="title_activity_weibodetail">Weibo</string>
+    <string name="title_activity_special">Special Columns</string>
+
     <string name="prefs_category_weibo">Weibo Account</string>
     <string name="prefs_unbound_weibo">Bound Weibo Account</string>
     <string name="prefs_click_to_unbound_weibo">Click to unbound</string>

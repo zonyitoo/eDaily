@@ -2,3 +2,4 @@ bin
 *.class
 project.properties
 gen
+R.java
