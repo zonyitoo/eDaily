@@ -80,6 +80,11 @@
             android:label="@string/title_activity_special"
             android:screenOrientation="portrait">
         </activity>
+        <activity 
+            android:name=".ui.VisualPictShowActivity"
+            android:label="@string/title_activity_visual_pict_show"
+            android:screenOrientation="portrait">
+        </activity>
     </application>
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" >
