@@ -16,4 +16,5 @@
     <string name="prefs_unbound_weibo">綁定微博</string>
     <string name="prefs_click_to_unbound_weibo">點撃解除綁定微博</string>
     <string name="prefs_click_to_bound_weibo">點撃綁定微博</string>
+    <string name="title_activity_visual_pict_show">視覺圖片</string>
 </resources>

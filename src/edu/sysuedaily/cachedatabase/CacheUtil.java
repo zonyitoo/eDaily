@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.nio.channels.FileLock;
 
 import android.os.Environment;
 import android.util.Log;
@@ -17,11 +18,12 @@ public class CacheUtil {
      */
     public static FileOutputStream getFileOutputStream(String filePath) {
 		FileOutputStream fouts = null;
-		File file = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + filePath);
+		File file = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + filePath.trim());
 		
 		if (file.exists() && file.isFile()) {
 			try {
 				fouts = new FileOutputStream(file);
+				Log.d("Ragnarok", "get the fouts path = " + file.getAbsolutePath());
 				return fouts;
 			} catch (FileNotFoundException e) {
 				// TODO Auto-generated catch block
@@ -33,10 +35,14 @@ public class CacheUtil {
 				File fileDirs = new File(file.getParent());
 				fileDirs.mkdirs();
 				//Log.d(LOG_TAG, "make the fileDirs " + fileDirs.getPath());
-				file.createNewFile();	
-				Log.d("Ragnarok", "create a new file name " + file.getName());
-				fouts = new FileOutputStream(file);
-				return fouts;
+				//file.createNewFile();	
+				//Log.d("Ragnarok", "create a new file name " + file.getName());
+				Log.d("Ragnarok", "file path " + file.getAbsolutePath());
+				synchronized (file) {
+					file.createNewFile();
+					fouts = new FileOutputStream(file);
+					return fouts;
+				}
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

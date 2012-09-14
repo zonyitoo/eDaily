@@ -129,6 +129,7 @@ public class AsyncImageLoader {
 			//Log.d(Constant.LOG_TAG, "in loadImageFromNet, the imageUrl is " + imageUrl);
 			if (imageUrl != null) {
 				final Bitmap bitmap = RequestUtil.urlToBitmap(imageUrl, requireSize);
+				ImageCache.getImageCache(context).cacheImage(bitmap, imageUrl);
 				if (bitmap != null) {
 					ramImageCache.put(imageUrl, new SoftReference<Bitmap>(bitmap));
 					//ImageCache.getImageCache().cacheImage(bitmap, imageUrl);
@@ -164,7 +165,7 @@ public class AsyncImageLoader {
 		try {
 			//Log.d(Constant.LOG_TAG, "in loadImageFromNet, the imageUrl is " + imageUrl);
 			if (imageUrl != null) {
-				final Bitmap bitmap = ImageCache.getImageCache(this.context).getCacheImage(imageUrl, requireSize);
+				final Bitmap bitmap = ImageCache.getImageCache(this.context).getCacheImage(imageUrl);
 				if (bitmap != null) {
 					ramImageCache.put(imageUrl, new SoftReference<Bitmap>(bitmap));
 					//ImageCache.getImageCache().cacheImage(bitmap, imageUrl);

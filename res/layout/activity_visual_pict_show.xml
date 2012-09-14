@@ -1,0 +1,50 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" 
+    android:background="#000000">
+
+    <!--
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:text="@string/hello_world"
+        tools:context=".VisualPictShowActivity" />
+	-->
+	<android.support.v4.view.ViewPager 
+	    android:id="@+id/visual_pict_show_view_pager"
+	    android:layout_width="match_parent"
+	    android:layout_height="250dp"
+	    android:layout_centerVertical="true"
+	    android:paddingBottom="20dp"
+	    />
+	<RelativeLayout android:layout_alignParentBottom="true"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:background="#424242">
+	    <TextView android:id="@+id/visual_pict_show_title_text"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="Title"
+	        android:layout_alignParentLeft="true"
+	        android:layout_marginLeft="10dp"
+	        android:textSize="20sp"
+	        android:layout_marginTop="10dp"
+	        android:layout_marginBottom="10dp"
+	        android:layout_centerVertical="true"
+	        android:textColor="#FFFFFF"/>
+	    <TextView android:id="@+id/visual_pict_show_pict_num_text"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="10dp"
+	        android:layout_marginBottom="10dp"
+	        android:layout_centerVertical="true"
+	        android:text="1/20"
+	        android:layout_alignParentRight="true"
+	        android:textSize="20sp"
+	        android:textColor="#FFFFFF"
+	        android:layout_marginRight="10dp"/>
+	</RelativeLayout>
+</RelativeLayout>

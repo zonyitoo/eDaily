@@ -66,8 +66,9 @@ public class JsonCacheDatabase extends SQLiteOpenHelper {
 		//String dateString = new SimpleDateFormat("yyyy/MM/dd").format(date);
 		SQLiteDatabase database = this.getReadableDatabase();
 		Cursor cursor = database.query(
-				TABLE_NAME, null, COLUMN_TYPE + " = " + NEWS_CACHE, null, null, null, COLUMN_DATE + " DESC");
+				TABLE_NAME, null, COLUMN_TYPE + " = " + "'" + NEWS_CACHE + "'", null, null, null, COLUMN_DATE + " DESC");
 		//cursor.moveToLast();
+		cursor.moveToFirst();
 		try {
 			int jsonIndex = cursor.getColumnIndex(COLUMN_JSON);
 			cursor.close();
@@ -94,8 +95,8 @@ public class JsonCacheDatabase extends SQLiteOpenHelper {
 	public String getVisualCacheJson() {
 		SQLiteDatabase database = this.getReadableDatabase();
 		Cursor cursor = database.query(
-				TABLE_NAME, null, COLUMN_TYPE + " = " + VISUAL_CACHE, null, null, null, COLUMN_DATE + " DESC");
-		//cursor.moveToLast();
+				TABLE_NAME, null, COLUMN_TYPE + " = " + "'" + VISUAL_CACHE + "'", null, null, null, COLUMN_DATE + " DESC");
+		cursor.moveToFirst();
 		try {
 			int jsonIndex = cursor.getColumnIndex(COLUMN_JSON);
 			cursor.close();
@@ -122,8 +123,8 @@ public class JsonCacheDatabase extends SQLiteOpenHelper {
 	public String getAltitudeCacheJson() {
 		SQLiteDatabase database = this.getReadableDatabase();
 		Cursor cursor = database.query(
-				TABLE_NAME, null, COLUMN_TYPE + " = " + ALTITUDE_CACHE, null, null, null, COLUMN_DATE + " DESC");
-		//cursor.moveToLast();
+				TABLE_NAME, null, COLUMN_TYPE + " = " + "'" + ALTITUDE_CACHE + "'", null, null, null, COLUMN_DATE + " DESC");
+		cursor.moveToFirst();
 		try {
 			int jsonIndex = cursor.getColumnIndex(COLUMN_JSON);
 			cursor.close();
@@ -150,8 +151,8 @@ public class JsonCacheDatabase extends SQLiteOpenHelper {
 	public String getWeiboCacheJson() {
 		SQLiteDatabase database = this.getReadableDatabase();
 		Cursor cursor = database.query(
-				TABLE_NAME, null, COLUMN_TYPE + " = " + WEIBO_CACHE, null, null, null, COLUMN_DATE + " DESC");
-		//cursor.moveToLast();
+				TABLE_NAME, null, COLUMN_TYPE + " = " + "'" + WEIBO_CACHE + "'", null, null, null, COLUMN_DATE + " DESC");
+		cursor.moveToFirst();
 		try {
 			int jsonIndex = cursor.getColumnIndex(COLUMN_JSON);
 			cursor.close();

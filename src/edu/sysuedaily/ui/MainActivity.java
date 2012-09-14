@@ -231,7 +231,6 @@ public class MainActivity extends SherlockActivity implements OnClickListener {
 			break;
 		case R.id.linear_spitslot:
 			startActivity(new Intent(this, SpitslotActivity.class));
-
 		default:
 			break;
 		}

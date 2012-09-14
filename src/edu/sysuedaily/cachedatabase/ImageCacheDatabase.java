@@ -19,6 +19,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.provider.BaseColumns;
 import android.util.Base64;
+import android.util.Log;
 
 // TODO: 还是把图片存放在SD卡上把。。
 public class ImageCacheDatabase extends SQLiteOpenHelper {
@@ -65,16 +66,16 @@ public class ImageCacheDatabase extends SQLiteOpenHelper {
 	 */
 	public boolean cacheImage(Date date, String url, Bitmap bitmap) {
 		String dateString = String.valueOf(date.getTime());
-		String encodeURL = Base64.encodeToString(url.getBytes(), Base64.DEFAULT);
+		String encodeURL = Base64.encodeToString(url.getBytes(), Base64.DEFAULT).trim();
 		String cachePath = CacheConstant.CACHE_IMAGE_DIR + encodeURL;
 		// put it into database
 		ContentValues values = new ContentValues();
 		values.put(COLUMN_CACHE_DATE, dateString);
 		values.put(COLUMN_IMAGE_PATH, cachePath);
-		values.put(COLUMN_URL, url);
+		values.put(COLUMN_URL, encodeURL); // store the encode url in the database
 		SQLiteDatabase db = this.getWritableDatabase();
 		db.insert(TABLE_NAME, null, values);
-		
+		db.close();
 		// write it into sdcard
 		FileOutputStream fouts = CacheUtil.getFileOutputStream(cachePath);
 		BufferedOutputStream bos = new BufferedOutputStream(fouts);
@@ -94,32 +95,33 @@ public class ImageCacheDatabase extends SQLiteOpenHelper {
 	 * @param url the image url
 	 * @return the bitmap, or null if raise a fucking error
 	 */
-	public Bitmap getCacheImage(String url, int requireSize) {
+	public Bitmap getCacheImage(String url) {
+		String encodeURL = Base64.encodeToString(url.getBytes(), Base64.DEFAULT).trim();
 		SQLiteDatabase db = this.getReadableDatabase();
-		Cursor cursor = db.query(TABLE_NAME, null, COLUMN_URL + "=" + url, null, null, null, COLUMN_CACHE_DATE + " DESC");
+		Cursor cursor = db.query(TABLE_NAME, null, COLUMN_URL + "=" + "'" + encodeURL + "'", 
+				null, null, null, COLUMN_CACHE_DATE + " DESC");
+		cursor.moveToFirst();
 		try {
 			int pathIndex = cursor.getColumnIndex(COLUMN_IMAGE_PATH);
-			String cachePath = cursor.getString(pathIndex);
-			FileInputStream fins = CacheUtil.getFileInputStream(cachePath);
-			//Bitmap bitmap = BitmapFactory.decodeStream(fins);
-			BitmapFactory.Options options = new BitmapFactory.Options();
-			options.inJustDecodeBounds = true;
-			BitmapFactory.decodeStream(fins, null, options);
-		
-			
-			// determinte the scale size
-			int scale = 1;
-			//Log.d(Constant.LOG_TAG, "the outHeight is " + options.outHeight + ", the outWidth is " + options.outWidth);
-			 
-			scale = RequestUtil.computeSampleSize(options, -1, requireSize * requireSize); 
-			options.inJustDecodeBounds = false;
-			//Log.d(Constant.LOG_TAG, "the scale is " + scale);
-			options.inSampleSize = scale;
-			Bitmap bitmap = BitmapFactory.decodeStream(fins, null, options);
-			return bitmap;
+			if (pathIndex != -1) {
+				Log.d("Ragnarok", "pathIndex = " + pathIndex + ", size = " + cursor.getCount());
+				String cachePath = cursor.getString(pathIndex);
+				Log.d("Ragnarok", "cachePath = " + cachePath);
+				cursor.close();
+				db.close();
+				FileInputStream fins = CacheUtil.getFileInputStream(cachePath);
+				Bitmap bitmap = BitmapFactory.decodeStream(fins);
+				Log.d("Ragnarok", "get the cache bitmap");
+				return bitmap;
+			} else {
+				Log.d("Ragnarok", "index = -1");
+				return null;
+			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			cursor.close();
+			db.close();
 			return null;
 		}
 	}

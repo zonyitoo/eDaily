@@ -64,6 +64,9 @@ public abstract class BaseAsyncAdapter<T> extends BaseAdapter {
 		setDefaultListener();
 		this.defaultImageResourceId = defaultImageResourceId;
 		this.viewList = new View[this.dataSet.size()];
+		for (int i = 0; i < viewList.length; i++) {
+			viewList[i] = inflater.inflate(this.layoutId, null, false);
+		}
 		this.ifLoadBit = new boolean[this.dataSet.size()];
 		//this.listOrGridView.setOnScrollListener(onScrollListener);
 	}

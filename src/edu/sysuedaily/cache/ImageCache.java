@@ -32,9 +32,9 @@ public class ImageCache {
 		return success;
 	}
 	
-	public Bitmap getCacheImage(String url, int requireSize) {
+	public Bitmap getCacheImage(String url) {
 		ImageCacheDatabase imageDatabase = new ImageCacheDatabase(this.context);
-		Bitmap bitmap  = imageDatabase.getCacheImage(url, requireSize);
+		Bitmap bitmap  = imageDatabase.getCacheImage(url);
 		if (bitmap != null) {
 			return bitmap;
 		}
